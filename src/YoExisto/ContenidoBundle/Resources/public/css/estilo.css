@@ -1,0 +1,224 @@
+html, body{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	/*
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Dosis', sans-serif;
+	*/
+	font-family: 'Dosis', sans-serif;
+}
+
+.v-center-contenedor{
+	display: table;
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+.v-center-contenido-v{
+	display: table-cell;
+	vertical-align: middle;
+}
+.v-bottom-contenido{
+	display: table-cell;
+	vertical-align: bottom;
+}
+.v-center-contenido-h{
+	text-align: center;
+}
+
+.alto-completo{
+	height: 100%;
+	position: relative;
+}
+
+.inner-addon, .left-inner-addon, .right-inner-addon {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.left-inner-addon input {
+    padding-left: 40px;
+}
+.left-inner-addon i {
+	left: 1px;
+	top: 1px;
+	padding: 16px;
+	pointer-events: none;
+	position: absolute;
+}
+
+.right-inner-addon input {
+    padding-right: 40px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.texto-naranja{
+	color: #f35b00;
+}
+.texto-gris{
+	color: #575757;
+}
+.texto-gris{
+	color: #000000;
+}
+
+.espacio-a{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-home i.icono{
+	background-repeat: no-repeat;
+	background-image: url('../../../bundles/yoexistocontenido/images/yoexisto-sprite1.png');
+	background-color: #F2F1ED; /*transparent*/
+}
+	.form-home i.icono-usuario{
+		background-position: -81px -84px;
+	}
+	.form-home i.icono-password{
+		background-position: -281px -84px;
+	}
+	.form-home i.icono-email{
+		background-position: -482px -84px;
+	}
+	.form-home i.icono-cedula{
+		background-position: -682px -84px;
+	}
+
+.input-home{
+	font-family: 'Dosis', sans-serif;
+	text-transform: uppercase;
+	font-weight: 500;
+	background-color: #F2F1ED; /*transparent*/
+	border-radius: 0px;
+	border-color: #959593;
+}
+.input-home:focus{
+	border-color: #f35b00;
+	/*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(243, 91, 0, .6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(243, 91, 0, .6);*/
+	box-shadow: none;
+}
+
+
+.fondo-cover{
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.wrapper-home{
+	width: 100%;
+	height: 100%;
+	background-image: url('../../../bundles/yoexistocontenido/images/bg_fotoiniciosesion.jpg');
+}
+
+.wrapper-registro{
+	width: 100%;
+	height: 100%;
+	background-image: url('../../../bundles/yoexistocontenido/images/bg_fotoregistro.jpg');	
+}
+
+.wrapper-dashboard{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: #ccebff;	
+}
+
+.titular-home{
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.lbl-home{
+	text-transform: uppercase;
+	font-weight: 500;	
+}
+
+.btn-home{
+	border-radius: 0px;
+	border-width: 1px;
+	border-style: solid;
+	text-transform: uppercase;
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.btn-tipo-a{
+	background-color: #f35b00;
+	border-color: #f35b00;
+	color: #ffffff;
+}
+	.btn-tipo-a:hover, .btn-tipo-a:focus, .btn-tipo-a:active{
+		background-color: #F2F1ED;
+		border-color: #f35b00;
+		color: #f35b00;
+	}
+
+.btn-tipo-b{
+	background-color: #F2F1ED;
+	border-color: #f35b00;
+	color: #f35b00;
+}
+	.btn-tipo-b:hover, .btn-tipo-b:focus, .btn-tipo-b:active{
+		background-color: #f35b00;
+		border-color: #f35b00;
+		color: #ffffff;
+	}
+
+.input-home-file{
+
+}
+.link-home{
+	color: #575757;
+	text-transform: uppercase;
+}
+
+.icono-grande{
+	position: relative;
+	background-repeat: no-repeat;
+	background-color: #575757; /*transparent*/
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
+}
+	.icono-grande-ok{
+		background-position: 10px 10px;
+	}
+
+.navbar-yoexisto.navbar-fixed-bottom{
+	border-top: #f35b00 4px solid;
+}
+.navbar-yoexisto.navbar-fixed-top{
+	border-bottom: #f35b00 4px solid;
+}
+
+#nav-yoexisto ul.navbar-nav li{
+	border-right: #575757 1px solid;	
+}
+
+#nav-yoexisto ul.navbar-nav li a{
+	color: #575757;
+	text-transform: uppercase;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+#nav-yoexisto ul.navbar-nav li.active a{
+	color: #f35b00;
+	background-image: none;
+	box-shadow: none;
+	background-color: transparent;
+}

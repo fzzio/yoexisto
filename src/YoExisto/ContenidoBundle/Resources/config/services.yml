@@ -1,0 +1,7 @@
+parameters:
+#    yo_existo_contenido.example.class: YoExisto\ContenidoBundle\Example
+
+services:
+#    yo_existo_contenido.example:
+#        class: %yo_existo_contenido.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

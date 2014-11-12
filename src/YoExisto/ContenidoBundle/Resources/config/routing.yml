@@ -1,0 +1,15 @@
+yo_existo_contenido_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: YoExistoContenidoBundle:Default:index }
+
+yoexisto_login:
+    path:      /login
+    defaults:  { _controller: YoExistoContenidoBundle:Default:home }
+
+yoexisto_registrar:
+    path:      /registrar
+    defaults:  { _controller: YoExistoContenidoBundle:Default:registrar }
+
+yoexisto_dashboard:
+    path:      /dashboard
+    defaults:  { _controller: YoExistoContenidoBundle:Default:dashboard }

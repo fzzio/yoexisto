@@ -1,0 +1,117 @@
+{% extends "YoExistoContenidoBundle::layout.html.twig" %}
+
+{% block contenido %}
+
+	<div class="fondo-cover wrapper-registro">
+		<div class="v-center-contenedor">
+			<div class="v-center-contenido-v">
+				
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 text-left">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										{% image '@YoExistoContenidoBundle/Resources/public/images/logo290x60.png' %}
+										<img src="{{ asset_url }}" title="" alt="" class="img-responsive" />
+										{% endimage %}
+									</div>
+								</div>
+							</div>
+							
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="titular-home text-center">REGÍSTRATE</h3>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<form class="form-home form-horizontal">
+											<div class="inner-addon left-inner-addon ">
+											    <i class="icono icono-usuario"></i>
+											    <input type="text" class="form-control input-home" placeholder="USUARIO" />
+											</div>
+											<div class="inner-addon left-inner-addon ">
+											    <i class="icono icono-password"></i>
+											    <input type="password" class="form-control input-home" placeholder="CONTRASEÑA" />
+											</div>
+											<div class="inner-addon left-inner-addon ">
+											    <i class="icono icono-email"></i>
+											    <input type="email" class="form-control input-home" placeholder="EMAIL" />
+											</div>
+											<div class="inner-addon left-inner-addon ">
+											    <i class="icono icono-cedula"></i>
+											    <input type="number" class="form-control input-home" placeholder="# CÉDULA" />
+											</div>
+											<div class="col-sm-12 text-center">
+												<input type="file" class="input-home-file" />
+											</div>
+											<div class="col-sm-8 col-sm-offset-2 text-center">
+												<button type="button" class="btn btn-lg btn-home btn-tipo-a">Registrarme</button>
+											</div>
+											<div class="col-sm-12 text-center">
+												<a href="{{ path('yoexisto_login') }}" class="link-home">&iquest;Ya tienes cuenta&quest; Inicia sesión</a>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+		 					
+
+		 					{# 
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="titular-home text-center">ESTAMOS CASI LISTOS</h3>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<p>
+											Hemos enviado un correo de confirmación a tu email. Haz click en el link de confirmación para terminar de crear tu cuenta.
+										</p>
+									</div>
+								</div>
+							</div>
+							#}
+
+							{# 
+							<div class="container-fluid">
+								<div class="row espacio-a">
+									<div class="col-md-12 text-center">
+										<div class="icono-grande icono-grande-ok">
+										</div>
+									</div>
+								</div>
+								<div class="row espacio-a">
+									<div class="col-md-12">
+										<h3 class="titular-home text-center">TU CUENTA HA SIDO CREADA</h3>
+									</div>
+								</div>
+								<div class="row espacio-a">
+									<div class="col-md-12 text-center">
+										<p>
+											Bienvenido oficialmente a la comunidad YoExisto.
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-8 col-sm-offset-2 text-center">
+										<button type="button" class="btn btn-lg btn-home btn-tipo-a">Generar Control</button>
+										<a href="#" class="btn btn-lg btn-home btn-tipo-b">Ver controles</a>
+									</div>
+								</div>
+							</div>
+							#}
+
+						</div>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

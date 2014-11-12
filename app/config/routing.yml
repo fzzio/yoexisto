@@ -1,0 +1,4 @@
+yo_existo_contenido:
+    resource: "@YoExistoContenidoBundle/Resources/config/routing.yml"
+    prefix:   /
+
