@@ -2,6 +2,13 @@
 
 {% block contenido %}
 
+
+    {% if error %}
+        <div>
+            <p >{{  error.message }}</p>
+        </div>
+    {% endif %}
+
 	<div class="fondo-cover wrapper-home">
 		<div class="v-center-contenedor">
 			<div class="v-center-contenido-v">
@@ -26,14 +33,14 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<form class="form-home form-horizontal">
+										<form class="form-home form-horizontal" method="post" action="{{ path('login_check') }}" >
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-usuario"></i>
-											    <input type="text" class="form-control input-home" placeholder="USUARIO" />
+											    <input type="text" class="form-control input-home" name="_username" placeholder="USUARIO" />
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-password"></i>
-											    <input type="password" class="form-control input-home" placeholder="CONTRASEÑA" />
+											    <input type="password" class="form-control input-home" name="_password" placeholder="CONTRASEÑA" />
 											</div>
 											<div class="checkbox">
 												<label class="lbl-home">
@@ -41,9 +48,13 @@
 												</label>
 											</div>
 											<div class="col-sm-8 col-sm-offset-2 text-center">
-												<button type="button" class="btn btn-lg btn-home btn-tipo-a">Ingresar</button>
+												<button type="submit" class="btn btn-lg btn-home btn-tipo-a">Ingresar</button>
 												<a href="{{ path('yoexisto_registrar') }}" class="btn btn-lg btn-home btn-tipo-b">Registrate</a>
 											</div>
+
+                                            <input type="hidden" name="_csrf_token"
+                                                   value="{{ csrf_token('authenticate') }}"
+                                                    >
 										</form>
 									</div>
 								</div>

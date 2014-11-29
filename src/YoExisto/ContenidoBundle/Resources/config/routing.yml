@@ -4,15 +4,16 @@ yo_existo_contenido_homepage:
 
 yoexisto_login:
     path:      /login
-    defaults:  { _controller: YoExistoContenidoBundle:Default:home }
+    defaults:  { _controller: YoExistoContenidoBundle:Default:login }
 
 yoexisto_registrar:
     path:      /registrar
     defaults:  { _controller: YoExistoContenidoBundle:Default:registrar }
 
 yoexisto_dashboard:
-    path:      /dashboard
+    path:      /
     defaults:  { _controller: YoExistoContenidoBundle:Default:dashboard }
+
 
 # Esto es para las 3 pantallas
 yoexisto_reciente:
@@ -22,3 +23,12 @@ yoexisto_reciente:
 yoexisto_donde:
     path:      /donde
     defaults:  { _controller: YoExistoContenidoBundle:Default:donde }
+
+
+
+
+login_check:
+    path:      /login_check
+
+salir:
+    path:   /logout

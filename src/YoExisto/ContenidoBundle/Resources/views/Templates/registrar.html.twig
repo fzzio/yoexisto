@@ -2,6 +2,16 @@
 
 {% block contenido %}
 
+
+
+
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+
+        {{ flashMessage }}
+
+    {% endfor %}
+
 	<div class="fondo-cover wrapper-registro">
 		<div class="v-center-contenedor">
 			<div class="v-center-contenido-v">
@@ -28,32 +38,33 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<form class="form-home form-horizontal">
+										<form class="form-home form-horizontal" method="post" action="{{ path('yoexisto_registrar') }}" >
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-usuario"></i>
-											    <input type="text" class="form-control input-home" placeholder="USUARIO" />
+                                                {{ form_widget(form.username ,  {'attr': {'class': 'form-control input-home' , placeholder: 'USUARIO'}}  ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-password"></i>
-											    <input type="password" class="form-control input-home" placeholder="CONTRASEÑA" />
+                                                {{ form_widget(form.password ,  {'attr': {'class': 'form-control input-home' , placeholder: 'CONTRASEÑA'}}  ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-email"></i>
-											    <input type="email" class="form-control input-home" placeholder="EMAIL" />
+                                                {{ form_widget(form.email,  {'attr': {'class': 'form-control input-home' , placeholder: 'EMAIL'}}  ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-cedula"></i>
-											    <input type="number" class="form-control input-home" placeholder="# CÉDULA" />
+                                                {{ form_widget(form.cedula,  {'attr': {'class': 'form-control input-home' , placeholder: '# CÉDULA'}}  ) }}
 											</div>
 											<div class="col-sm-12 text-center">
 												<input type="file" class="input-home-file" />
 											</div>
 											<div class="col-sm-8 col-sm-offset-2 text-center">
-												<button type="button" class="btn btn-lg btn-home btn-tipo-a">Registrarme</button>
+												<button type="submit" class="btn btn-lg btn-home btn-tipo-a">Registrarme</button>
 											</div>
 											<div class="col-sm-12 text-center">
 												<a href="{{ path('yoexisto_login') }}" class="link-home">&iquest;Ya tienes cuenta&quest; Inicia sesión</a>
 											</div>
+                                            {{ form_widget(form._token) }}
 										</form>
 									</div>
 								</div>
