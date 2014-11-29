@@ -18,6 +18,12 @@ class DefaultController extends Controller
         return $this->render('YoExistoContenidoBundle:Default:index.html.twig', array('name' => $name));
     }
 
+    public function readyAction()
+    {
+        return $this->render('YoExistoContenidoBundle:Templates:ready.html.twig');
+    }
+
+
     public function loginAction()
     {
 
@@ -111,7 +117,7 @@ class DefaultController extends Controller
                 );
 
 
-                return $this->redirect($this->generateUrl('yoexisto_login'));
+                return $this->redirect($this->generateUrl('yoexisto_ready'));
             }
 
 
