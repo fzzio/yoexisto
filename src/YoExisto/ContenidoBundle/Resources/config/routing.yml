@@ -10,6 +10,11 @@ yoexisto_registrar:
     path:      /registrar
     defaults:  { _controller: YoExistoContenidoBundle:Default:registrar }
 
+yoexisto_ready:
+    path:      /ready
+    defaults:  { _controller: YoExistoContenidoBundle:Default:ready }
+
+
 yoexisto_dashboard:
     path:      /
     defaults:  { _controller: YoExistoContenidoBundle:Default:dashboard }
@@ -26,9 +31,11 @@ yoexisto_donde:
 
 
 
-
 login_check:
     path:      /login_check
+
+
+
 
 salir:
     path:   /logout
