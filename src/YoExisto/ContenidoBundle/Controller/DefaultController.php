@@ -25,4 +25,14 @@ class DefaultController extends Controller
     {
         return $this->render('YoExistoContenidoBundle:Templates:dashboard.html.twig');
     }
+
+    public function recienteAction()
+    {
+        return $this->render('YoExistoContenidoBundle:Templates:reciente.html.twig');
+    }
+
+    public function dondeAction()
+    {
+        return $this->render('YoExistoContenidoBundle:Templates:donde.html.twig');
+    }
 }

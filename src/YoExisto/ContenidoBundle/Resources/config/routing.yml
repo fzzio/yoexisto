@@ -13,3 +13,12 @@ yoexisto_registrar:
 yoexisto_dashboard:
     path:      /dashboard
     defaults:  { _controller: YoExistoContenidoBundle:Default:dashboard }
+
+# Esto es para las 3 pantallas
+yoexisto_reciente:
+    path:      /reciente
+    defaults:  { _controller: YoExistoContenidoBundle:Default:reciente }
+
+yoexisto_donde:
+    path:      /donde
+    defaults:  { _controller: YoExistoContenidoBundle:Default:donde }
