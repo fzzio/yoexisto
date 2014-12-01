@@ -139,8 +139,24 @@ class DefaultController extends Controller
         return $this->render('YoExistoContenidoBundle:Templates:reciente.html.twig');
     }
 
+    /* Esta sección es para los 3 pasos al generar un reporte */
     public function dondeAction()
     {
         return $this->render('YoExistoContenidoBundle:Templates:donde.html.twig');
+    }
+
+    public function queAction()
+    {
+        return $this->render('YoExistoContenidoBundle:Templates:que.html.twig');
+    }
+
+    public function resumenAction()
+    {
+        return $this->render('YoExistoContenidoBundle:Templates:resumen.html.twig');
+    }
+
+    public function generadoAction()
+    {
+        return $this->render('YoExistoContenidoBundle:Templates:generado.html.twig');
     }
 }

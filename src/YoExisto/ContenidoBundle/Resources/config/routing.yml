@@ -29,6 +29,18 @@ yoexisto_donde:
     path:      /donde
     defaults:  { _controller: YoExistoContenidoBundle:Default:donde }
 
+yoexisto_que:
+    path:      /que
+    defaults:  { _controller: YoExistoContenidoBundle:Default:que }
+
+yoexisto_resumen:
+    path:      /resumen
+    defaults:  { _controller: YoExistoContenidoBundle:Default:resumen }
+
+yoexisto_generado:
+    path:      /generado
+    defaults:  { _controller: YoExistoContenidoBundle:Default:generado }
+
 
 
 login_check:
