@@ -20,6 +20,9 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
+      $("#form_latitud").val(position.coords.latitude);
+      $("#form_logitud").val(position.coords.longitude);
+
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
@@ -58,6 +61,10 @@ function initializeDir(address) {
 
     // So , using the first result I need to create a  latlng object to be pass later to the map
     var latlng = new google.maps.LatLng(result[0].geometry.location.lat(), result[0].geometry.location.lng());  
+
+
+        $("#form_latitud").val(result[0].geometry.location.lat());
+        $("#form_logitud").val(result[0].geometry.location.lng());
  
     // some initial values to the map   
     var myOptions = {
