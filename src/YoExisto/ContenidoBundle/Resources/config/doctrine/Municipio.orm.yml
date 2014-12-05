@@ -1,0 +1,20 @@
+YoExisto\ContenidoBundle\Entity\Municipio:
+    type:  entity
+    table: municipio
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        nombre:
+            type: string
+            nullable: false
+
+        descripcion:
+            type: text
+            nullable: true
+

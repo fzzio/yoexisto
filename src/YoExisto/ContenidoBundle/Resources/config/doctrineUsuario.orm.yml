@@ -1,0 +1,21 @@
+YoExisto\ContenidoBundle\Entity\Usuario:
+    type:  entity
+    table: usuario
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        cedula:
+            type: string
+            nullable: false
+
+
+        activacion:
+            type: string
+            nullable: true
+

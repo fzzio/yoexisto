@@ -1,0 +1,29 @@
+YoExisto\ContenidoBundle\Entity\Que:
+    type:  entity
+    table: tbl_que
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        titulo:
+            type: string
+            nullable: false
+
+
+        descripcion:
+            type: text
+            nullable: true
+
+
+        archivo:
+            type: text
+            nullable: true
+
+
+
+
