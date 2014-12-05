@@ -28,6 +28,18 @@ YoExisto\ContenidoBundle\Entity\Control:
             type: integer
             nullable: false
 
+        created_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: create
+        updated_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: update
 
 
 
@@ -37,12 +49,14 @@ YoExisto\ContenidoBundle\Entity\Control:
             joinColumn:
                 name: donde_id
                 referencedColumnName: id
+            cascade: ["persist"]
 
         que:
             targetEntity: Que
             joinColumn:
                 name: que_id
                 referencedColumnName: id
+            cascade: ["persist"]
 
 
     manyToMany:

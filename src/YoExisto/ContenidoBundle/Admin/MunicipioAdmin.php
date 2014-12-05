@@ -47,7 +47,7 @@ class MunicipioAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            
+
             ->add('nombre')
             ->add('descripcion')
         ;

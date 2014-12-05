@@ -80,4 +80,9 @@ class Municipio
     {
         return $this->descripcion;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
+
 }

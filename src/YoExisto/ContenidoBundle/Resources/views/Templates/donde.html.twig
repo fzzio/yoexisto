@@ -1,6 +1,6 @@
 {% extends "YoExistoContenidoBundle:Templates:dashboard.html.twig" %}
 {% block contenidointerno %}
-	<div class="container-fluid">
+    <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
 		
 		<div class="row espacio-a">
 			<div class="col-md-12 espacio-a">
@@ -16,24 +16,26 @@
 				<img src="{{ asset_url }}" title="" alt="" class="img-responsive img-centrar" />
 				{% endimage %}
 			</div>
+
+
+            <form   method="post" action="{{ path('yoexisto_donde') }}" >
+
+                {{ form_errors(form) }}
+
 			<div class="col-md-8 txt-mayusculas">
-				<select class="form-control espacio-a">
-					<option>Municipio</option>
-					<option>Municipio 1</option>
-					<option>Municipio 2</option>
-					<option>Municipio 3</option>
-					<option>Municipio 4</option>
-				</select>
-				<select class="form-control espacio-a">
-					<option>Area</option>
-					<option>Area 1</option>
-					<option>Area 2</option>
-					<option>Area 3</option>
-					<option>Area 4</option>
-				</select>
+
+                {{ form_widget(  form.municipio , {'attr':{'class':'form-control espacio-a'}} ) }}
+                {{ form_widget(  form.area , {'attr':{'class':'form-control espacio-a'}} ) }}
+                {{ form_widget(  form.latitud  ) }}
+                {{ form_widget(  form.longitud  ) }}
+
+
+
 				<span>Escribe la dirección o geolocaliza tu ubicación</span>
 				<div class="form-group">
-					<input type="text" placeholder="Dirección"><button class="btn btn-tipo-a btn-geo">Geolocalizar</button>
+                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Direccion'}} ) }}
+
+                    <button class="btn btn-tipo-a btn-geo">Geolocalizar</button>
 				</div>
 				<div id="geomapa" class="geomapa">
 					
@@ -50,6 +52,8 @@
 				</div>
 			</div>
 		</div>
+        {{ form_widget(form._token) }}
+        </form>
 	</div>
 
 {% endblock %}

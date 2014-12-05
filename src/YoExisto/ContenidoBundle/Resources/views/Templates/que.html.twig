@@ -16,24 +16,33 @@
 				<img src="{{ asset_url }}" title="" alt="" class="img-responsive img-centrar" />
 				{% endimage %}
 			</div>
+
+            <form id="form"  method="post"   {{ form_enctype(form) }}  action="{{ path('yoexisto_que') }}" >
 			<div class="col-md-8 txt-mayusculas">
 				<div class="form-group espacio-a">
-					<input type="text" class="form-control" placeholder="Ingresa un titulo para el controls">
+                    {{ form_widget(  form.titulo, {'attr':{'class':'form-control' , 'placeholder' : 'Ingresa un titulo para el controls' }} ) }}
+
 				</div>
 				<div class="form-group espacio-a">
-					<textarea rows="5" class="form-control" placeholder="Cuéntanos lo que está pasando"></textarea>
+                    {{ form_widget(  form.descripcion, {'attr':{'class':'form-control' , 'placeholder' : 'Cuéntanos lo que está pasando' , 'rows': '5' }} ) }}
+
 				</div>
 				<div class="form-group espacio-a">
-					<input type="file" placeholder="Suba una foto" />
+                    {{ form_widget(  form.file , {'attr':{'class':'form-control' , 'placeholder' : 'Suba una foto' }} ) }}
+
 				</div>
-			</div>
-		</div>
+            </div>
+                {{ form_widget(form._token) }}
+            </form>
+
+        </div>
+
 		<div class="row espacio-a">
 			<div class="col-md-4 col-md-offset-2 txt-mayusculas">
-				<button class="btn btn-lg btn-home btn-tipo-a">Atrás</button>
+				<button  onclick="window.location='{{path('yoexisto_donde') }}'"  class="btn btn-lg btn-home btn-tipo-a">Atrás</button>
 			</div>
 			<div class="col-md-4 txt-mayusculas">
-				<button class="btn btn-lg btn-home btn-tipo-a">Siguiente</button>
+				<button type="submit" class="btn btn-lg btn-home btn-tipo-a" onclick="document.getElementById('form').submit();"  >Siguiente</button>
 			</div>
 		</div>
 	</div>

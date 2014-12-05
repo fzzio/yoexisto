@@ -27,4 +27,17 @@ YoExisto\ContenidoBundle\Entity\Donde:
             nullable: true
 
 
+    manyToOne:
+        municipio:
+            targetEntity: Municipio
+            joinColumn:
+                name: municipio_id
+                referencedColumnName: id
+
+        area:
+            targetEntity: Area
+            joinColumn:
+                name: area_id
+                referencedColumnName: id
+
 

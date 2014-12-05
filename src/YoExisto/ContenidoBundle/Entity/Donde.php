@@ -136,4 +136,60 @@ class Donde
     {
         return $this->descripcion;
     }
+    /**
+     * @var \YoExisto\ContenidoBundle\Entity\Municipio
+     */
+    private $municipio;
+
+    /**
+     * @var \YoExisto\ContenidoBundle\Entity\Area
+     */
+    private $area;
+
+
+    /**
+     * Set municipio
+     *
+     * @param \YoExisto\ContenidoBundle\Entity\Municipio $municipio
+     * @return Donde
+     */
+    public function setMunicipio(\YoExisto\ContenidoBundle\Entity\Municipio $municipio = null)
+    {
+        $this->municipio = $municipio;
+    
+        return $this;
+    }
+
+    /**
+     * Get municipio
+     *
+     * @return \YoExisto\ContenidoBundle\Entity\Municipio 
+     */
+    public function getMunicipio()
+    {
+        return $this->municipio;
+    }
+
+    /**
+     * Set area
+     *
+     * @param \YoExisto\ContenidoBundle\Entity\Area $area
+     * @return Donde
+     */
+    public function setArea(\YoExisto\ContenidoBundle\Entity\Area $area = null)
+    {
+        $this->area = $area;
+    
+        return $this;
+    }
+
+    /**
+     * Get area
+     *
+     * @return \YoExisto\ContenidoBundle\Entity\Area 
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
 }

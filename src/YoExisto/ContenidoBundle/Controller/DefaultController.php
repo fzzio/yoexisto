@@ -2,14 +2,15 @@
 
 namespace YoExisto\ContenidoBundle\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use YoExisto\ContenidoBundle\Entity\Control;
 use YoExisto\ContenidoBundle\Entity\Usuario;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+
 
 
 class DefaultController extends Controller
@@ -144,24 +145,108 @@ class DefaultController extends Controller
 
 
     /* Esta sección es para los 3 pasos al generar un reporte */
-    public function dondeAction()
+    public function dondeAction(Request $request)
     {
+
+        $control = $this->getCurrentControl();
+
+        $donde = $control->getDonde();
+        if(  !$donde ){
+            $donde = new \YoExisto\ContenidoBundle\Entity\Donde();
+        }
+
+
+
+
+        $form = $this->createFormBuilder($donde)
+            ->add('municipio', null , array('required' => true))
+            ->add('area', null , array('required' => true))
+            ->add('descripcion', 'text')
+            ->add('latitud', 'hidden')
+            ->add('longitud', 'hidden')
+            ->add('save', 'submit', array('label' => 'Create Task'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $donde->setNombre("");
+            $donde->setLatitud("");
+            $donde->setLongitud("");
+
+            $control->setDonde($donde);
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+
+            return $this->redirect($this->generateUrl('yoexisto_que'));
+        }
+
+
+        return $this->render('YoExistoContenidoBundle:Templates:donde.html.twig' , array("form" =>  $form->createView() ));
+    }
+
+    public function queAction( Request $request  )
+    {
+
+
+        $control = $this->getCurrentControl();
+
+        $que = $control->getQue();
+        if(  !$que ){
+            $que = new \YoExisto\ContenidoBundle\Entity\Que();
+        }
+
+
+
+
+        $form = $this->createFormBuilder($que)
+            ->add('titulo', null , array('required' => true))
+            ->add('descripcion', null , array('required' => true))
+            ->add('file', 'file' , array('required' => true))
+
+
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $que->upload( $this->get('kernel')->getRootDir().'/../web/');
+            $control->setQue($que);
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+
+            return $this->redirect($this->generateUrl('yoexisto_resumen'));
+        }
+
+
+        return $this->render('YoExistoContenidoBundle:Templates:que.html.twig' , array("form" => $form->createView()));
+    }
+
+    public function resumenAction(  Request $request  )
+    {
+        $em = $this->getDoctrine()->getManager();
 
         $control = $this->getCurrentControl();
 
 
 
-        return $this->render('YoExistoContenidoBundle:Templates:donde.html.twig');
-    }
+        if($this->getRequest()->isMethod('POST')){
 
-    public function queAction()
-    {
-        return $this->render('YoExistoContenidoBundle:Templates:que.html.twig');
-    }
+            $control->setEstado(1);
+            $em->flush();
+            return $this->redirect($this->generateUrl('yoexisto_reciente'));
+        }
 
-    public function resumenAction()
-    {
-        return $this->render('YoExistoContenidoBundle:Templates:resumen.html.twig');
+
+        return $this->render('YoExistoContenidoBundle:Templates:resumen.html.twig' , array("control"  => $control));
     }
 
     public function generadoAction()
@@ -182,7 +267,7 @@ class DefaultController extends Controller
         if(!$control){
             $control = new Control();
             $control->setUsuario($usuario);
-            $control->setEstado(1);
+            $control->setEstado(0);
             $control->setPositivos(0);
             $control->setNegativos(0);
 

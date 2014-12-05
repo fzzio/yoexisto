@@ -16,32 +16,36 @@
 				{% endimage %}
 			</div>
 			<div class="col-md-8 txt-mayusculas">
+
+                <form id="form"  method="post" action="{{ path('yoexisto_resumen') }}">
+
 				<p>
-					<strong>Municipio: </strong>Lorep ipsum
+					<strong>Municipio: </strong>{{ control.donde.municipio }}
 				</p>
 				<p>
-					<strong>Área: </strong>Lorep ipsum
+					<strong>Área: </strong>{{ control.donde.area }}
 				</p>
 				<p>
-					<strong>Dirección: </strong>Lorep ipsum
+					<strong>Dirección: </strong>{{ control.donde.descripcion }}
 				</p>
 				<p>
-					<strong>Nombre institución: </strong>Lorep ipsum
+					<strong>Nombre institución: </strong>{{ control.que.titulo }}
 				</p>
 				<p>
-					<strong>Descripción Control: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
+					<strong>Descripción Control: </strong>{{ control.que.descripcion}}
 				</p>
 				<p>
-					<strong>Imagen: </strong><img src="http://placehold.it/150x150" alt="" class="img-responsive" />
+					<strong>Imagen: </strong><img src="{{ asset('uploads/'  ~  control.que.archivo  ) }}" alt="" class="img-responsive" />
 				</p>
+                </form>
 			</div>
 		</div>
 		<div class="row espacio-a">
 			<div class="col-md-4 col-md-offset-2 txt-mayusculas">
-				<button class="btn btn-lg btn-home btn-tipo-a">Atrás</button>
+				<button class="btn btn-lg btn-home btn-tipo-a"  onclick="window.location='{{ path('yoexisto_que') }}' " >Atrás</button>
 			</div>
 			<div class="col-md-4 txt-mayusculas">
-				<button class="btn btn-lg btn-home btn-tipo-a">Activar Control</button>
+				<button class="btn btn-lg btn-home btn-tipo-a"   onclick=" document.getElementById('form').submit(); " >Activar Control</button>
 			</div>
 		</div>
 	</div>
