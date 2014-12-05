@@ -324,3 +324,9 @@ i.icono-reporte{
 	cursor: pointer;
 	background-color: #FFFFFF;
 }
+
+.btn-transparente{
+	background-image: none;
+	background-color: transparent;
+	border-radius: 0px;
+}
