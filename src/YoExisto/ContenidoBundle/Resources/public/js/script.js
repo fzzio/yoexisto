@@ -36,6 +36,12 @@ function initialize() {
   }
 }
 
+function setMap(lat, lng) {
+    map_location = new google.maps.LatLng(lat, lng);
+    marker.setPosition(map_location);
+    map.setCenter(map_location);
+}
+
 function initializeZ(zoomRecibido) {
   var mapOptions = {
     zoom: zoomRecibido,
@@ -119,7 +125,7 @@ $(document).ready(function(){
 	});
 
 	mostrarPanel();
-	
+
 	$('.row-reporte-reciente').click(function() {
 		ocultarPanel();
 	});
