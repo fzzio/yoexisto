@@ -5,3 +5,14 @@ services:
 #    yo_existo_contenido.example:
 #        class: %yo_existo_contenido.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    yo_existo_contenido.admin.area:
+        class: YoExisto\ContenidoBundle\Admin\AreaAdmin
+        arguments: [~, YoExisto\ContenidoBundle\Entity\Area, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Area}
+
+    yo_existo_contenido.admin.municipio:
+        class: YoExisto\ContenidoBundle\Admin\MunicipioAdmin
+        arguments: [~, YoExisto\ContenidoBundle\Entity\Municipio, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Municipio}

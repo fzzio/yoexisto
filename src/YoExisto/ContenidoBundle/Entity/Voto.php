@@ -5,9 +5,9 @@ namespace YoExisto\ContenidoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Que
+ * Voto
  */
-class Que
+class Voto
 {
     /**
      * @var integer
@@ -17,17 +17,12 @@ class Que
     /**
      * @var string
      */
-    private $titulo;
+    private $usuario;
 
     /**
      * @var string
      */
     private $descripcion;
-
-    /**
-     * @var string
-     */
-    private $archivo;
 
 
     /**
@@ -41,33 +36,33 @@ class Que
     }
 
     /**
-     * Set titulo
+     * Set usuario
      *
-     * @param string $titulo
-     * @return Que
+     * @param string $usuario
+     * @return Voto
      */
-    public function setTitulo($titulo)
+    public function setUsuario($usuario)
     {
-        $this->titulo = $titulo;
+        $this->usuario = $usuario;
     
         return $this;
     }
 
     /**
-     * Get titulo
+     * Get usuario
      *
      * @return string 
      */
-    public function getTitulo()
+    public function getUsuario()
     {
-        return $this->titulo;
+        return $this->usuario;
     }
 
     /**
      * Set descripcion
      *
      * @param string $descripcion
-     * @return Que
+     * @return Voto
      */
     public function setDescripcion($descripcion)
     {
@@ -85,27 +80,32 @@ class Que
     {
         return $this->descripcion;
     }
+    /**
+     * @var integer
+     */
+    private $valor;
+
 
     /**
-     * Set archivo
+     * Set valor
      *
-     * @param string $archivo
-     * @return Que
+     * @param integer $valor
+     * @return Voto
      */
-    public function setArchivo($archivo)
+    public function setValor($valor)
     {
-        $this->archivo = $archivo;
+        $this->valor = $valor;
     
         return $this;
     }
 
     /**
-     * Get archivo
+     * Get valor
      *
-     * @return string 
+     * @return integer 
      */
-    public function getArchivo()
+    public function getValor()
     {
-        return $this->archivo;
+        return $this->valor;
     }
 }

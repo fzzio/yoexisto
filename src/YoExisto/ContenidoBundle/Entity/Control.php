@@ -25,9 +25,19 @@ class Control
     private $descripcion;
 
     /**
-     * @var string
+     * @var integer
      */
     private $estado;
+
+    /**
+     * @var integer
+     */
+    private $positivos;
+
+    /**
+     * @var integer
+     */
+    private $negativos;
 
     /**
      * @var \YoExisto\ContenidoBundle\Entity\Donde
@@ -39,7 +49,19 @@ class Control
      */
     private $que;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $votos;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->votos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -99,7 +121,7 @@ class Control
     /**
      * Set estado
      *
-     * @param string $estado
+     * @param integer $estado
      * @return Control
      */
     public function setEstado($estado)
@@ -112,11 +134,57 @@ class Control
     /**
      * Get estado
      *
-     * @return string 
+     * @return integer 
      */
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * Set positivos
+     *
+     * @param integer $positivos
+     * @return Control
+     */
+    public function setPositivos($positivos)
+    {
+        $this->positivos = $positivos;
+    
+        return $this;
+    }
+
+    /**
+     * Get positivos
+     *
+     * @return integer 
+     */
+    public function getPositivos()
+    {
+        return $this->positivos;
+    }
+
+    /**
+     * Set negativos
+     *
+     * @param integer $negativos
+     * @return Control
+     */
+    public function setNegativos($negativos)
+    {
+        $this->negativos = $negativos;
+    
+        return $this;
+    }
+
+    /**
+     * Get negativos
+     *
+     * @return integer 
+     */
+    public function getNegativos()
+    {
+        return $this->negativos;
     }
 
     /**
@@ -163,5 +231,38 @@ class Control
     public function getQue()
     {
         return $this->que;
+    }
+
+    /**
+     * Add votos
+     *
+     * @param \YoExisto\ContenidoBundle\Entity\Voto $votos
+     * @return Control
+     */
+    public function addVoto(\YoExisto\ContenidoBundle\Entity\Voto $votos)
+    {
+        $this->votos[] = $votos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove votos
+     *
+     * @param \YoExisto\ContenidoBundle\Entity\Voto $votos
+     */
+    public function removeVoto(\YoExisto\ContenidoBundle\Entity\Voto $votos)
+    {
+        $this->votos->removeElement($votos);
+    }
+
+    /**
+     * Get votos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVotos()
+    {
+        return $this->votos;
     }
 }

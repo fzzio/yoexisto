@@ -12,4 +12,10 @@ YoExisto\ContenidoBundle\Entity\Usuario:
 
         cedula:
             type: string
-            nullable: false
+            nullable: true
+
+
+        activacion:
+            type: string
+            nullable: true
+

@@ -21,6 +21,12 @@ YoExisto\ContenidoBundle\Entity\Control:
         estado:
             type: integer
             nullable: false
+        positivos:
+            type: integer
+            nullable: false
+        negativos:
+            type: integer
+            nullable: false
 
 
 
@@ -37,4 +43,19 @@ YoExisto\ContenidoBundle\Entity\Control:
             joinColumn:
                 name: que_id
                 referencedColumnName: id
+
+
+    manyToMany:
+        votos:
+            targetEntity: Voto
+            joinTable:
+                name: votos_control
+                joinColumns:
+                    votos_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    control_id:
+                        referencedColumnName: id
+                        unique: true
+
 

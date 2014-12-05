@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use YoExisto\ContenidoBundle\Entity\Control;
 use YoExisto\ContenidoBundle\Entity\Usuario;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -139,9 +140,17 @@ class DefaultController extends Controller
         return $this->render('YoExistoContenidoBundle:Templates:reciente.html.twig');
     }
 
+
+
+
     /* Esta sección es para los 3 pasos al generar un reporte */
     public function dondeAction()
     {
+
+        $control = $this->getCurrentControl();
+
+
+
         return $this->render('YoExistoContenidoBundle:Templates:donde.html.twig');
     }
 
@@ -159,4 +168,31 @@ class DefaultController extends Controller
     {
         return $this->render('YoExistoContenidoBundle:Templates:generado.html.twig');
     }
+
+
+
+
+    function getCurrentControl(){
+
+        $usuario = $this->get('security.context')->getToken()->getUser()->getUsername();
+        $em = $this->getDoctrine()->getManager();
+
+        $control = $em->getRepository("YoExistoContenidoBundle:Control")->findOneBy(array("usuario" => $usuario));
+
+        if(!$control){
+            $control = new Control();
+            $control->setUsuario($usuario);
+            $control->setEstado(1);
+            $control->setPositivos(0);
+            $control->setNegativos(0);
+
+            $em->persist($control);
+            $em->flush();
+        }
+
+        return $control;
+
+    }
+
+
 }

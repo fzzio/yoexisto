@@ -49,6 +49,7 @@
 												<button type="submit" class="btn btn-lg btn-home btn-tipo-a">Ingresar</button>
 												<a href="{{ path('yoexisto_registrar') }}" class="btn btn-lg btn-home btn-tipo-b">Registrate</a>
 											</div>
+                                            <input type="hidden" name="_target_path" value="yoexisto_reciente" />
                                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
 										</form>
 									</div>
