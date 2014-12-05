@@ -24,38 +24,14 @@
 								</li>
 							</ul>
 
-							<ul class="nav nav-bar col-md-7 navbar-right lst-perfil text-center">
-								<li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-									<a href="">
-										<h2>
-											18
-										</h2>
-										<span>
-											Controles Generados
-										</span>
-									</a>
-								</li>
-								<li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-									<a href="">
-										<h2>
-											02
-										</h2>
-										<span>
-											Controles Atendidos
-										</span>
-									</a>
-								</li>
-								<li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-									<a href="">
-										<h2>
-											18
-										</h2>
-										<span>
-											Controles en votación
-										</span>
-									</a>
-								</li>
-							</ul>
+
+
+
+                            {{ render(controller('YoExistoContenidoBundle:Default:getControles')) }}
+
+
+
+
 						</div>
 						<div class="row">
 							<div class="col-md-12 espacio-a">
@@ -125,14 +101,18 @@
 								</span>
 							</div>
 						</div>
-						{% block reportesrecientes %}
-							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
-							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
-							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
-							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
-							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
-							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
-						{% endblock %}
+
+
+
+
+
+
+                        {{ render(controller('YoExistoContenidoBundle:Default:getActividadReciente')) }}
+
+
+
+
+
 					</div>
 				</div>
 			</div>

@@ -14,12 +14,14 @@
 		</div>
 
 		<span class="texto-naranja txt-mayusculas">Actividad Reciente</span>
-		{% block misreportesrecientes %}
-			{% include 'YoExistoContenidoBundle:Blocks:reporte.html.twig' %}
-			{% include 'YoExistoContenidoBundle:Blocks:reporte.html.twig' %}
-			{% include 'YoExistoContenidoBundle:Blocks:reporte.html.twig' %}
-			{% include 'YoExistoContenidoBundle:Blocks:reporte.html.twig' %}
-		{% endblock %}	
+
+
+        {% for control in controles%}
+            {% include 'YoExistoContenidoBundle:Blocks:reporte.html.twig' with {'control' : control} %}
+        {% endfor %}
+
+
+
 	</div>
 
 {% endblock %}

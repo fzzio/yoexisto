@@ -17,7 +17,10 @@
 	</head>
 	<body>
 		{% block menu %}
-			
+
+            {{ render(controller(
+            'YoExistoContenidoBundle:Default:getMenu'
+            )) }}
 		{% endblock %}
 
 
