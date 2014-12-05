@@ -1,0 +1,40 @@
+YoExisto\ContenidoBundle\Entity\Control:
+    type:  entity
+    table: control
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        usuario:
+            type: string
+            nullable: false
+
+        descripcion:
+            type: text
+            nullable: true
+
+        estado:
+            type: integer
+            nullable: false
+
+
+
+
+    manyToOne:
+        donde:
+            targetEntity: Donde
+            joinColumn:
+                name: donde_id
+                referencedColumnName: id
+
+        que:
+            targetEntity: Que
+            joinColumn:
+                name: que_id
+                referencedColumnName: id
+

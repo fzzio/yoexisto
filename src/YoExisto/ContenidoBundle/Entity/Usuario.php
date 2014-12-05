@@ -27,6 +27,12 @@ class Usuario extends BaseUser
     private $cedula;
 
 
+    /**
+     * @var string
+     */
+    private $activacion;
+
+
 
     /**
      * Set cedula
@@ -65,4 +71,30 @@ class Usuario extends BaseUser
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getActivacion()
+    {
+        return $this->activacion;
+    }
+
+    /**
+     * @param string $activacion
+     */
+    public function setActivacion($activacion)
+    {
+        $this->activacion = $activacion;
+    }
+
+
+
+
+    
+
+
+
+
+
 }

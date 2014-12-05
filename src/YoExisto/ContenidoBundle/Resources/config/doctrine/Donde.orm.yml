@@ -1,0 +1,30 @@
+YoExisto\ContenidoBundle\Entity\Donde:
+    type:  entity
+    table: donde
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        nombre:
+            type: string
+            nullable: false
+
+        latitud:
+            type: string
+            nullable: false
+
+        longitud:
+            type: string
+            nullable: false
+
+        descripcion:
+            type: text
+            nullable: true
+
+
+

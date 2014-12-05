@@ -1,0 +1,20 @@
+YoExisto\ContenidoBundle\Entity\Voto:
+    type:  entity
+    table: area
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        usuario:
+            type: string
+            nullable: false
+
+        descripcion:
+            type: text
+            nullable: true
+
