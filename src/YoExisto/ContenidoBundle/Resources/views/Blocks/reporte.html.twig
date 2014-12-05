@@ -1,11 +1,11 @@
 <div class="row row-reporte">
 	<div class="col-md-12 espacio-a">
-		<strong class="txt-mayusculas">Lorep ipsum</strong>
+		<strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
+            {{ control.que.descripcion }}
 		</p>
 		<span class="icono-cont">
-			<i class="icono-reporte rp-publicado"></i>Publicado por <a href="">Lorep Ipsum</a>
+			<i class="icono-reporte rp-publicado"></i>Publicado por <a href="">{{ control.usuario }}</a>
 		</span>
 		|
 		<span class="icono-cont">
@@ -13,7 +13,7 @@
 		</span>
 		|
 		<span class="icono-cont">
-			<i class="icono-reporte rp-voto"></i> 10 votos
+			<i class="icono-reporte rp-voto"></i> {{ control.positivos }} votos
 		</span>
 		<hr class="linea-gris" />
 	</div>

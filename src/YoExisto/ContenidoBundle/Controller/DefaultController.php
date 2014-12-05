@@ -138,7 +138,33 @@ class DefaultController extends Controller
 
     public function recienteAction()
     {
-        return $this->render('YoExistoContenidoBundle:Templates:reciente.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $this->get('security.context')->getToken()->getUser()->getUsername();
+        $controles = $em->getRepository("YoExistoContenidoBundle:Control")->findBy(array("estado" => 1 , "usuario" => $usuario ));
+
+        return $this->render('YoExistoContenidoBundle:Templates:reciente.html.twig' , array("controles" => $controles ));
+    }
+
+
+
+
+    public function getControlesAction(){
+
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $this->get('security.context')->getToken()->getUser()->getUsername();
+        $controles = $em->getRepository("YoExistoContenidoBundle:Control")->findBy(array("estado" => 1 , "usuario" => $usuario ));
+
+        return $this->render('YoExistoContenidoBundle:Blocks:controles.html.twig' , array("controles" => $controles) );
+    }
+
+
+    public function getActividadRecienteAction(){
+
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $this->get('security.context')->getToken()->getUser()->getUsername();
+        $controles = $em->getRepository("YoExistoContenidoBundle:Control")->findBy(array("estado" => 1 ));
+
+        return $this->render('YoExistoContenidoBundle:Blocks:actividad_reciente.html.twig' , array("controles" => $controles) );
     }
 
 
@@ -153,6 +179,9 @@ class DefaultController extends Controller
         $donde = $control->getDonde();
         if(  !$donde ){
             $donde = new \YoExisto\ContenidoBundle\Entity\Donde();
+            $donde->setLongitud("0");
+            $donde->setLatitud("0");
+
         }
 
 
@@ -172,8 +201,7 @@ class DefaultController extends Controller
         if ($form->isValid()) {
 
             $donde->setNombre("");
-            $donde->setLatitud("");
-            $donde->setLongitud("");
+
 
             $control->setDonde($donde);
 

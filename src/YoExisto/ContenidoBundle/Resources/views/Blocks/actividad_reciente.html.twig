@@ -1,0 +1,23 @@
+
+{% for control in controles %}
+
+
+    <div class="row row-reporte row-reporte-reciente">
+        <div class="col-md-12 espacio-a fuente-menor">
+            <strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
+            <p>
+                {{ control.que.descripcion }}
+            </p>
+		<span class="icono-cont">
+			<i class="icono-reporte rp-publicado"></i>Publicado por <a href="">{{ control.usuario }}</a>
+		</span>
+            |
+		<span class="icono-cont">
+			<i class="icono-reporte rp-ver"></i><a href="#">Ver más</a>
+		</span>
+            <hr class="linea-gris" />
+        </div>
+    </div>
+
+
+{% endfor %}
