@@ -262,7 +262,7 @@ class DefaultController extends Controller
         $usuario = $this->get('security.context')->getToken()->getUser()->getUsername();
         $em = $this->getDoctrine()->getManager();
 
-        $control = $em->getRepository("YoExistoContenidoBundle:Control")->findOneBy(array("usuario" => $usuario));
+        $control = $em->getRepository("YoExistoContenidoBundle:Control")->findOneBy(array("usuario" => $usuario , "estado" => 0 ));
 
         if(!$control){
             $control = new Control();
