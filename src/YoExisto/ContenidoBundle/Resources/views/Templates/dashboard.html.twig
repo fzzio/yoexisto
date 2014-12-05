@@ -12,8 +12,8 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-7 fondo-blanco">
-					<div class="container-fluid">
+				<div class="col-md-6 espacio-a" id="mis-reportes">
+					<div class="container-fluid fondo-gris">
 						<div class="row fondo-naranja txt-mayusculas txt-blanco">
 							<ul class="nav nav-bar col-md-5 lst-perfil">
 								<li class="col-lg-5 col-md-5 col-sm-5 col-xs-5 interlineado-140">
@@ -67,41 +67,72 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-md-offset-1 fondo-blanco">
-					<div class="container-fluid">
-						<div class="row fondo-naranja txt-mayusculas txt-blanco">
-							<div class="col-md-12 espacio-a">
-								<span class="txt-mayusculas">
-									Controles generados automáticamente
-								</span>
+				<div class="col-md-3 espacio-a" id="reporte-detalle">
+					<div class="container-fluid fondo-gris">
+						<div class="row">
+							<div class="col-md-12">
+								{% image '@YoExistoContenidoBundle/Resources/public/images/resumen.png' %}
+								<img src="{{ asset_url }}" title="" alt="" class="img-contenido img-centrar" />
+								{% endimage %}
+								<h4 class="txt-mayusculas txt-naranja">
+									Título del control<br/>
+								</h4>
+								<span>Publicado por:</span>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-12 espacio-a">
-								<h4 class="txt-mayusculas">Lorep ipsum</h4>
+							<div class="col-md-12 txt-mayusculas">
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
+									<strong>Municipio: </strong>Lorep ipsum
 								</p>
-								<span class="">Publicado por <a href="">Lorep Ipsum</a></span> | <span class="">Ver mas</span>
-								<hr />
-							</div>
-							<div class="col-md-12 espacio-a">
-								<h4 class="txt-mayusculas">Lorep ipsum</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
+									<strong>Área: </strong>Lorep ipsum
 								</p>
-								<span class="">Publicado por <a href="">Lorep Ipsum</a></span> | <span class="">Ver mas</span>
-								<hr />
-							</div>
-							<div class="col-md-12 espacio-a">
-								<h4 class="txt-mayusculas">Lorep ipsum</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
+									<strong>Dirección: </strong>Lorep ipsum
 								</p>
-								<span class="">Publicado por <a href="">Lorep Ipsum</a></span> | <span class="">Ver mas</span>
-								<hr />
+								<p>
+									<strong>Nombre institución: </strong>Lorep ipsum
+								</p>
+								<p>
+									<strong>Descripción Control: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
+								</p>
+								<p>
+									<strong>Imagen: </strong><img src="http://placehold.it/150x150" alt="" class="img-responsive" />
+								</p>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<h5>Actualmente tiene <strong>18</strong> Votos</h5>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button class="btn btn-lg btn-home btn-tipo-a">
+									Votar por control
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 espacio-a" id="reportes-recientes">
+					<div class="container-fluid fondo-gris">
+						<div class="row fondo-naranja txt-mayusculas txt-blanco">
+							<div class="col-md-12 espacio-a">
+								<span class="txt-mayusculas">
+									Controles generados recientemente
+								</span>
+							</div>
+						</div>
+						{% block reportesrecientes %}
+							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
+							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
+							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
+							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
+							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
+							{% include 'YoExistoContenidoBundle:Blocks:reporte-reciente.html.twig' %}
+						{% endblock %}
 					</div>
 				</div>
 			</div>

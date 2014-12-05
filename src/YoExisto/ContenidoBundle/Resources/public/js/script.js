@@ -6,7 +6,7 @@ var map;
 
 function initialize() {
   var mapOptions = {
-    zoom: 15,
+    zoom: 5,
     zoomControl: true,
     scaleControl: false,
     scrollwheel: false,
@@ -36,6 +36,39 @@ function initialize() {
   }
 }
 
+function initializeZ(zoomRecibido) {
+  var mapOptions = {
+    zoom: zoomRecibido,
+    zoomControl: true,
+    scaleControl: false,
+    scrollwheel: false,
+  };
+  map = new google.maps.Map(document.getElementById('geomapa'),
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'Encontrado.'
+      });
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
     var content = 'Error: The Geolocation service failed.';
@@ -54,9 +87,46 @@ function handleNoGeolocation(errorFlag) {
 }
 
 
+
+function mostrarPanel(){
+	$("#mis-reportes").removeClass('col-md-9');
+	$("#mis-reportes").addClass('col-md-6');
+
+	$("#reporte-detalle").show('slow');
+
+
+	$("#reportes-recientes").removeClass('col-md-3');
+	$("#reportes-recientes").addClass('col-md-3');
+}
+
+function ocultarPanel(){
+	$("#mis-reportes").removeClass('col-md-6');
+	$("#mis-reportes").addClass('col-md-9');
+
+	$("#reporte-detalle").hide('slow');
+
+
+	$("#reportes-recientes").removeClass('col-md-3');
+	$("#reportes-recientes").addClass('col-md-3');
+}
+
+
 $(document).ready(function(){
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
 	$('.btn-geo').click(function() {
+		initializeZ(15);
 	});
+
+	mostrarPanel();
+	
+	$('.row-reporte-reciente').click(function() {
+		ocultarPanel();
+	});
+	
+
+	
+
+	
+
 });

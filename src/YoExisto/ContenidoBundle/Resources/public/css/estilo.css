@@ -65,13 +65,13 @@ html, body{
 .texto-gris{
 	color: #575757;
 }
-.texto-gris{
-	color: #000000;
-}
-
 .espacio-a{
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.linea-gris{
+	border-top: 2px solid #bebebe;
 }
 
 .form-home i.icono{
@@ -204,10 +204,10 @@ html, body{
 	}
 
 .navbar-yoexisto.navbar-fixed-bottom{
-	border-top: #f35b00 4px solid;
+	border-top: #f35b00 2px solid;
 }
 .navbar-yoexisto.navbar-fixed-top{
-	border-bottom: #f35b00 4px solid;
+	border-bottom: #f35b00 2px solid;
 }
 
 #nav-yoexisto ul.navbar-nav li{
@@ -230,6 +230,10 @@ html, body{
 
 .fondo-naranja{
 	background-color: #f35b00;
+}
+
+.fondo-gris{
+	background-color: #F0EAEA;
 }
 
 .img-centrar{
@@ -261,6 +265,9 @@ html, body{
 .txt-negrita{
 	font-weight: 500;
 }
+.txt-naranja{
+	color: #f35b00;
+}
 
 .geomapa{
 	position: relative;
@@ -277,4 +284,43 @@ html, body{
 
 .msj-error{
 	color: #FF0000;
+}
+
+.icono-cont{
+	margin-right: 5px;
+}
+
+.img-contenido{
+	width: 60px;
+	float: left;
+	padding: 5px;
+	margin: 5px;
+}
+
+i.icono-reporte{
+	background-repeat: no-repeat;
+	background-image: url('../../../bundles/yoexistocontenido/images/yoexisto-sprite1.png');
+	position: relative;
+	padding: 2px 14px;
+}
+
+	i.icono-reporte.rp-publicado{
+		background-position: -286px -492px;
+	}
+	i.icono-reporte.rp-ver{
+		background-position: -86px -492px;
+	}
+	i.icono-reporte.rp-voto{
+		background-position: -487px -291px;
+	}
+
+.fuente-menor *{
+	font-size: 12px;
+}
+
+.row-reporte:hover,
+.row-reporte:active,
+.row-reporte:focus{
+	cursor: pointer;
+	background-color: #FFFFFF;
 }
