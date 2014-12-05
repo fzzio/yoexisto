@@ -1,4 +1,10 @@
 {% extends "YoExistoContenidoBundle:Templates:dashboard.html.twig" %}
+
+
+{% block menu %}
+	{% include 'YoExistoContenidoBundle:Blocks:menu-user.html.twig' %}
+{% endblock %}
+
 {% block contenidointerno %}
 	<div class="container-fluid">
 		
@@ -23,7 +29,7 @@
 		<div class="row espacio-a">
 			<div class="col-md-6 col-md-offset-3 txt-mayusculas">
 				<div class="form-group">
-					<button class="btn btn-lg btn-home btn-tipo-a">Volver a la página principal</button>
+					<button class="btn btn-home btn-tipo-a">Volver a la página principal</button>
 				</div>
 			</div>
 		</div>
