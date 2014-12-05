@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class SecurityController extends Controller
 {
-    public function indexAction($name)
+    /*public function indexAction($name)
     {
         return $this->render('YoExistoContenidoBundle:Default:index.html.twig', array('name' => $name));
     }
@@ -24,5 +24,5 @@ class SecurityController extends Controller
     public function dashboardAction()
     {
         return $this->render('YoExistoContenidoBundle:Templates:dashboard.html.twig');
-    }
+    }*/
 }

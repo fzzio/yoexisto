@@ -15,9 +15,13 @@ yoexisto_ready:
     defaults:  { _controller: YoExistoContenidoBundle:Default:ready }
 
 
-yoexisto_dashboard:
+# yoexisto_dashboard:
+#     path:      /
+#     defaults:  { _controller: YoExistoContenidoBundle:Default:dashboard }
+
+yoexisto_home:
     path:      /
-    defaults:  { _controller: YoExistoContenidoBundle:Default:dashboard }
+    defaults:  { _controller: YoExistoContenidoBundle:Default:login }
 
 
 # Esto es para las 3 pantallas

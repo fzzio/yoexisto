@@ -40,7 +40,7 @@ class DefaultController extends Controller
 
 
 
-        return $this->render('YoExistoContenidoBundle:Templates:home.html.twig'  , array(
+        return $this->render('YoExistoContenidoBundle:Templates:login.html.twig'  , array(
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error'         => $error
         ));
