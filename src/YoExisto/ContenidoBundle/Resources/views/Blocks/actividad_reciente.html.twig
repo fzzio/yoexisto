@@ -8,15 +8,23 @@
             <p>
                 {{ control.que.descripcion }}
             </p>
-		<span class="icono-cont">
-			<i class="icono-reporte rp-publicado"></i>Publicado por <a href="">{{ control.usuario }}</a>
-		</span>
-            |
-		<span class="icono-cont">
-			<i class="icono-reporte rp-ver"></i><a href="#">Ver más</a>
-		</span>
+            
+            <div class="contenedor-img-reciente">
+                <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar" alt="">
+            </div>
+
+            <span class="icono-cont">
+                <i class="icono-reporte rp-publicado"></i>Publicado por <a href="">{{ control.usuario }}</a>
+            </span>
+                |
+            <span class="icono-cont">
+                <i class="icono-reporte rp-ver"></i><a href="#">Ver más</a>
+            </span>
+            
+
             <hr class="linea-gris" />
         </div>
+
     </div>
 
 

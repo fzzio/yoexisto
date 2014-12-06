@@ -184,7 +184,7 @@ $(document).ready(function(){
 	mostrarPanel();
 
 	$('.row-reporte-reciente').click(function() {
-		ocultarPanel();
+		//ocultarPanel();
 	});
 	
 

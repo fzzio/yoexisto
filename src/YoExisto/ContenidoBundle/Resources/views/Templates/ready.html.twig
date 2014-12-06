@@ -50,14 +50,19 @@
                                 <div class="row espacio-a">
                                     <div class="col-md-12 text-center">
                                         <p>
-                                            Bienvenido <strong>{{ app.user.username }}</strong> oficialmente a la comunidad YoExisto.
+                                            Bienvenido <strong>{# {{ app.user.username }} #}</strong> oficialmente a la comunidad YoExisto.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-8 col-sm-offset-2 text-center">
-                                        <a href="{{ path('yoexisto_donde') }}" class="btn btn-lg btn-home btn-tipo-a">Generar Control</a>
-                                        <a href="{{ path('yoexisto_reciente') }}" class="btn btn-lg btn-home btn-tipo-b">Ver controles</a>
+                                        {# 
+                                            luego le ponemos
+                                            yoexisto_donde
+                                            yoexisto_reciente
+                                         #}
+                                        <a href="{{ path('yoexisto_login') }}" class="btn btn-lg btn-home btn-tipo-a">Generar Control</a>
+                                        <a href="{{ path('yoexisto_login') }}" class="btn btn-lg btn-home btn-tipo-b">Ver controles</a>
                                     </div>
                                 </div>
                             </div>

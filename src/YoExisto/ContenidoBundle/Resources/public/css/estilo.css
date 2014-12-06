@@ -135,7 +135,7 @@ html, body{
 	width: 100%;
 	min-height: 100%;
 	height: auto;
-	background-color: #ccebff;	
+	background-color: #f5e8e1;	
 }
 
 .fondo-blanco{
@@ -233,7 +233,7 @@ html, body{
 }
 
 .fondo-gris{
-	background-color: #F0EAEA;
+	background-color: #FAFAFA;
 }
 
 .img-centrar{
@@ -329,4 +329,15 @@ i.icono-reporte{
 	background-image: none;
 	background-color: transparent;
 	border-radius: 0px;
+}
+
+.img-reporte-reciente{
+	height: 60px;
+	margin: 0 auto;
+}
+
+.contenedor-img-reciente{
+	width: 100%;
+	height: 80px;
+	overflow: hidden;
 }
