@@ -178,14 +178,9 @@ function verReporte(reporte){
           $("#reportes-recientes").removeClass('col-md-4');
           $("#reportes-recientes").addClass('col-md-3');
 
-/*          <div class="col-md-8 espacio-a" id="mis-reportes">
-<div class="col-md-4" id="reporte-detalle">
-<div class="col-md-4 espacio-a" id="reportes-recientes">*/
-
-
         }
           
-        console.log(respuesta);
+        //console.log(respuesta);
       }, 
       error: function (error) {
         console.log("ERROR: " + error);

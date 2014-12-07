@@ -164,7 +164,10 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $usuario = $this->get('security.context')->getToken()->getUser()->getUsername();
-        $controles = $em->getRepository("YoExistoContenidoBundle:Control")->findBy(array("estado" => 1 ));
+        $controles = $em->getRepository("YoExistoContenidoBundle:Control")->findBy(
+            array("estado" => 1 ),
+            array('updated_at' => 'DESC')
+        );
 
         return $this->render('YoExistoContenidoBundle:Blocks:actividad_reciente.html.twig' , array("controles" => $controles) );
     }
@@ -317,7 +320,8 @@ class DefaultController extends Controller
 
             $controlRecibido = $this->getDoctrine()->getRepository("YoExistoContenidoBundle:Control")->findOneBy(
                 array(
-                    "id" => $id_control
+                    "id" => $id_control,
+                    "estado" => 1 
                 )
             );
 
