@@ -344,7 +344,7 @@ i.icono-reporte{
 .row-reporte:hover,
 .row-reporte:active,
 .row-reporte:focus{
-	cursor: pointer;
+	/*cursor: pointer;*/
 	background-color: #FFFFFF;
 }
 
