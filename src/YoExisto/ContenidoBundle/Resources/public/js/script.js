@@ -131,6 +131,67 @@ function initializeZ(zoomRecibido, lugarBuscado) {
 
 }
 
+function cerrarDetalle(){
+  $("#mis-reportes").removeClass('col-md-6');
+  $("#mis-reportes").addClass('col-md-8');
+
+  $("#reporte-detalle").hide();
+
+  $("#reportes-recientes").removeClass('col-md-3');
+  $("#reportes-recientes").addClass('col-md-4');
+}
+
+function verReporte(reporte){
+
+  //console.log("Ver detalles de reporte: " + reporte);
+
+  var parametros = {
+      idReporte: reporte
+  }
+
+  $.ajax({
+      url: Routing.generate('yoexisto_reporte_detalle'),
+      type: 'POST',
+      async: true,
+      data: parametros,
+      dataType: "json",
+      success: function (respuesta) {
+        if (respuesta.codigo == 1) {
+
+          $("#mis-reportes").removeClass('col-md-8');
+          $("#mis-reportes").addClass('col-md-6');
+
+
+          $("#drp-titulo").text( respuesta.control.titulo );
+          $("#drp-autor").text( respuesta.control.autor );
+          $("#drp-municipio").text( respuesta.control.municipio );
+          $("#drp-area").text( respuesta.control.area );
+          $("#drp-direccion").text( respuesta.control.direccion );
+          $("#drp-institucion").text( respuesta.control.institucion );
+          $("#drp-descripcion").text( respuesta.control.descripcion );
+          $("#drp-imagen").attr("src", "/yoexistoapp/web/uploads/" + respuesta.control.imagen); //fzzio verificar
+          $("#drp-votos").text( respuesta.control.votos );
+          
+
+          $("#reporte-detalle").show();
+
+          $("#reportes-recientes").removeClass('col-md-4');
+          $("#reportes-recientes").addClass('col-md-3');
+
+/*          <div class="col-md-8 espacio-a" id="mis-reportes">
+<div class="col-md-4" id="reporte-detalle">
+<div class="col-md-4 espacio-a" id="reportes-recientes">*/
+
+
+        }
+          
+        console.log(respuesta);
+      }, 
+      error: function (error) {
+        console.log("ERROR: " + error);
+      }
+  });
+}
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {

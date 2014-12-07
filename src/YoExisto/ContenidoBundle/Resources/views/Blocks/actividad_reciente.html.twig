@@ -2,7 +2,7 @@
 {% for control in controles %}
 
 
-    <div class="row row-reporte row-reporte-reciente">
+    <div class="row row-reporte row-reporte-reciente" onclick="verReporte({{ control.id }});">
         <div class="col-md-12">
             <strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
             <p>

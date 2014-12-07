@@ -10,6 +10,8 @@ use YoExisto\ContenidoBundle\Entity\Control;
 use YoExisto\ContenidoBundle\Entity\Usuario;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 
@@ -307,5 +309,55 @@ class DefaultController extends Controller
 
     }
 
+    public function getDetalleReporteAction(Request $request){
+
+        if ($request->isMethod('POST')) {
+            $id_control = intval($request->request->get('idReporte'));
+
+
+            $controlRecibido = $this->getDoctrine()->getRepository("YoExistoContenidoBundle:Control")->findOneBy(
+                array(
+                    "id" => $id_control
+                )
+            );
+
+            if ($controlRecibido) {
+
+
+                $arrayContol = array(
+                    'idcontol' => $controlRecibido->getId(),
+                    'idcontolRecibido' => $id_control,
+                    'titulo' => $controlRecibido->getQue()->getTitulo(),
+                    'autor'=> $controlRecibido->getUsuario(),
+                    'municipio'=> $controlRecibido->getDonde()->getMunicipio()->getNombre(),
+                    'area'=> $controlRecibido->getDonde()->getArea()->getNombre(),
+                    'direccion'=> $controlRecibido->getDonde()->getDescripcion(),
+                    //'institucion'=> $controlRecibido->getDonde()->getInstitucion,
+                    'institucion'=> "",
+                    'descripcion'=> $controlRecibido->getQue()->getDescripcion(),
+                    'imagen'=> $controlRecibido->getQue()->getArchivo(),
+                    'votos'=> $controlRecibido->getPositivos()
+                );
+                
+                return new JsonResponse(array(
+                    'codigo' => 1,
+                    'Mensaje' => "Se ha encontrado el control",
+                    'control' => $arrayContol
+                ), 200); //codigo de error diferente
+            }else{
+                return new JsonResponse(array(
+                    'codigo' => 1,
+                    'Mensaje' => "Control no encontrado",
+                    'idcontolRecibido' => $id_control
+                ), 200); //codigo de error diferente
+            }
+
+        }
+
+        return new JsonResponse(array(
+            'codigo' => 0,
+            'Mensaje' => "Error al recibir"
+        ), 200); //codigo de error diferente
+    }
 
 }

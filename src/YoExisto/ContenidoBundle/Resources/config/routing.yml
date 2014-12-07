@@ -46,6 +46,12 @@ yoexisto_generado:
     defaults:  { _controller: YoExistoContenidoBundle:Default:generado }
 
 
+yoexisto_reporte_detalle:
+    path:      /reportedetalles
+    defaults:  { _controller: YoExistoContenidoBundle:Default:getDetalleReporte }
+    options:
+        expose: true
+
 
 login_check:
     path:      /login_check

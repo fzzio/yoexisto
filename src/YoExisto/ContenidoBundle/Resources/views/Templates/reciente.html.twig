@@ -18,14 +18,12 @@
 				<h3 class="texto-naranja txt-mayusculas">Actividad Reciente</h3>
 			</div>
 		</div>
+	</div>
 
-
+	<div class="container-fluid reportes-recientes-cont">
         {% for control in controles%}
             {% include 'YoExistoContenidoBundle:Blocks:reporte.html.twig' with {'control' : control} %}
         {% endfor %}
-
-
-
 	</div>
 
 {% endblock %}

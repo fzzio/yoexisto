@@ -427,3 +427,8 @@ input::-moz-placeholder {  /* Firefox 19+ */
 input:-ms-input-placeholder {
    text-transform: uppercase;
 }
+
+.reportes-recientes-cont{
+	max-height: 442px;
+	overflow-y: auto;
+}

@@ -37,7 +37,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4" id="reporte-detalle">
+				<div class="col-md-3 espacio-a" id="reporte-detalle">
+					{% include 'YoExistoContenidoBundle:Blocks:detalle-reporte.html.twig' %}
 				</div>
 
 				<div class="col-md-4 espacio-a" id="reportes-recientes">
@@ -71,13 +72,9 @@
 								<hr class="linea-gris" />
 							</div>
 						</div>
-
+					</div>
+					<div class="container-fluid fondo-gris reportes-recientes-cont">
                         {{ render(controller('YoExistoContenidoBundle:Default:getActividadReciente')) }}
-
-
-
-
-
 					</div>
 				</div>
 			</div>

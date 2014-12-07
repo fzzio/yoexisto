@@ -1,41 +1,45 @@
-<div class="col-md-3 espacio-a" id="reporte-detalle">
 	<div class="container-fluid fondo-gris">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 				{% image '@YoExistoContenidoBundle/Resources/public/images/resumen.png' %}
 				<img src="{{ asset_url }}" title="" alt="" class="img-contenido img-centrar" />
 				{% endimage %}
-				<h4 class="txt-mayusculas txt-naranja">
+				<h4 class="txt-mayusculas txt-naranja" id="drp-titulo">
 					Título del control<br/>
 				</h4>
-				<span>Publicado por:</span>
+				<h4>Publicado por: <span id="drp-autor"></span> </h4>
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-right">
+				<h3>
+					<a href="#" class="link-yep icono-cerrar" alt="" onclick="cerrarDetalle();"></a>
+				</h3>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 txt-mayusculas">
 				<p>
-					<strong>Municipio: </strong>Lorep ipsum
+					<strong>Municipio: </strong><span id="drp-municipio"></span>
 				</p>
 				<p>
-					<strong>Área: </strong>Lorep ipsum
+					<strong>Área: </strong><span id="drp-area"></span>
 				</p>
 				<p>
-					<strong>Dirección: </strong>Lorep ipsum
+					<strong>Dirección: </strong><span id="drp-direccion"></span>
 				</p>
 				<p>
-					<strong>Nombre institución: </strong>Lorep ipsum
+					<strong>Nombre institución: </strong><span id="drp-institucion"></span>
 				</p>
 				<p>
-					<strong>Descripción Control: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
+					<strong>Descripción Control: </strong><span id="drp-descripcion"></span>
 				</p>
 				<p>
-					<strong>Imagen: </strong><img src="http://placehold.it/150x150" alt="" class="img-responsive" />
+					<strong>Imagen: </strong><img src="http://placehold.it/150x150" alt="" class="img-responsive" id="drp-imagen" />
 				</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h5>Actualmente tiene <strong>18</strong> Votos</h5>
+				<h5>Actualmente tiene <strong id="drp-votos">18</strong> Votos</h5>
 			</div>
 		</div>
 		<div class="row">
@@ -46,4 +50,3 @@
 			</div>
 		</div>
 	</div>
-</div>
