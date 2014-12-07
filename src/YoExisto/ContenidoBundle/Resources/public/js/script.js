@@ -181,7 +181,7 @@ $(document).ready(function(){
 		initializeZ(15,  $("#form_descripcion").val()   );
 	});
 
-	mostrarPanel();
+	//mostrarPanel();
 
 	$('.row-reporte-reciente').click(function() {
 		//ocultarPanel();

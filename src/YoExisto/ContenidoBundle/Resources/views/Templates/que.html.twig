@@ -8,9 +8,14 @@
 	<div class="container-fluid">
 		
 		<div class="row espacio-a">
-			<div class="col-md-12 espacio-a">
+			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-1000">
 				<h3 class="txt-mayusculas">Generar Control</h3>
 				<span>Llene los datos a continuación para generar control</span>
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-right">
+				<h3>
+					<a href="{{ path('yoexisto_reciente') }}" class="link-yep icono-cerrar" alt=""></a>
+				</h3>
 			</div>
 		</div>
 		<div class="row espacio-a">
@@ -18,7 +23,7 @@
 				<h1 class="txt-mayusculas espacio-a">Qué está pasando?</h1>
 				<span class="espacio-a">Describe de que se trata este control en máximo 300 caracteres y una foto.</span>
 				{% image '@YoExistoContenidoBundle/Resources/public/images/que.png' %}
-				<img src="{{ asset_url }}" title="" alt="" class="img-responsive img-centrar" />
+				<img src="{{ asset_url }}" title="" alt="" class="img-responsive img-centrar img-icono-grande" />
 				{% endimage %}
 			</div>
 

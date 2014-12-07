@@ -41,19 +41,19 @@
 										<form class="form-home form-horizontal" method="post" action="{{ path('yoexisto_registrar') }}" >
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-usuario"></i>
-                                                {{ form_widget(form.username ,  {'attr': {'class': 'form-control input-home' , placeholder: 'USUARIO'}}  ) }}
+                                                {{ form_widget(form.username ,  {'attr': {'class': 'form-control input-home' , placeholder: 'USUARIO', maxlength:'50' }}  ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-password"></i>
-                                                {{ form_widget(form.password ,  {'attr': {'class': 'form-control input-home' , placeholder: 'CONTRASEÑA'}}  ) }}
+                                                {{ form_widget(form.password ,  {'attr': {'class': 'form-control input-home' , placeholder: 'CONTRASEÑA', maxlength:'50' }}  ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-email"></i>
-                                                {{ form_widget(form.email,  {'attr': {'class': 'form-control input-home' , placeholder: 'EMAIL'}}  ) }}
+                                                {{ form_widget(form.email,  {'attr': {'class': 'form-control input-home' , placeholder: 'EMAIL', maxlength:'50' }}  ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-cedula"></i>
-                                                {{ form_widget(form.cedula,  {'attr': {'class': 'form-control input-home' , placeholder: '# CÉDULA'}}  ) }}
+                                                {{ form_widget(form.cedula,  {'attr': {'class': 'form-control input-home' , placeholder: '# CÉDULA', maxlength:'10' }}  ) }}
 											</div>
                                             {#
 											<div class="col-sm-12 text-center">

@@ -12,7 +12,7 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 espacio-a" id="mis-reportes">
+				<div class="col-md-8 espacio-a" id="mis-reportes">
 					<div class="container-fluid fondo-gris">
 						<div class="row fondo-naranja txt-mayusculas txt-blanco">
 							<ul class="nav nav-bar col-md-5 lst-perfil">
@@ -24,13 +24,7 @@
 								</li>
 							</ul>
 
-
-
-
                             {{ render(controller('YoExistoContenidoBundle:Default:getControles')) }}
-
-
-
 
 						</div>
 						<div class="row">
@@ -43,69 +37,40 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 espacio-a" id="reporte-detalle">
-					<div class="container-fluid fondo-gris">
-						<div class="row">
-							<div class="col-md-12">
-								{% image '@YoExistoContenidoBundle/Resources/public/images/resumen.png' %}
-								<img src="{{ asset_url }}" title="" alt="" class="img-contenido img-centrar" />
-								{% endimage %}
-								<h4 class="txt-mayusculas txt-naranja">
-									Título del control<br/>
-								</h4>
-								<span>Publicado por:</span>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 txt-mayusculas">
-								<p>
-									<strong>Municipio: </strong>Lorep ipsum
-								</p>
-								<p>
-									<strong>Área: </strong>Lorep ipsum
-								</p>
-								<p>
-									<strong>Dirección: </strong>Lorep ipsum
-								</p>
-								<p>
-									<strong>Nombre institución: </strong>Lorep ipsum
-								</p>
-								<p>
-									<strong>Descripción Control: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis urna sed tellus semper ultricies. Donec ultricies quis urna eu commodo.
-								</p>
-								<p>
-									<strong>Imagen: </strong><img src="http://placehold.it/150x150" alt="" class="img-responsive" />
-								</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<h5>Actualmente tiene <strong>18</strong> Votos</h5>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<button class="btn btn-lg btn-home btn-tipo-a">
-									Votar por control
-								</button>
-							</div>
-						</div>
-					</div>
+				<div class="col-md-4" id="reporte-detalle">
 				</div>
-				<div class="col-md-3 espacio-a" id="reportes-recientes">
+
+				<div class="col-md-4 espacio-a" id="reportes-recientes">
 					<div class="container-fluid fondo-gris">
 						<div class="row fondo-naranja txt-mayusculas txt-blanco">
-							<div class="col-md-12 espacio-a">
+							<div class="col-md-12 espacio-a ">
 								<span class="txt-mayusculas">
 									Controles generados recientemente
 								</span>
 							</div>
 						</div>
 
-
-
-
-
+						<div class="row espacio-a ">
+							<div class="col-md-12">
+								<h4 class="txt-mayusculas">
+									Filtrar búsqueda
+								</h4>
+								<select class="form-control espacio-a yea-borde input-yeapp oscuro">
+									<option>Municipio</option>
+									<option>Municipio 11</option>
+									<option>Municipio 12</option>
+									<option>Municipio 13</option>
+								</select>
+								<select class="form-control espacio-a yea-borde input-yeapp oscuro">
+									<option>Area</option>
+									<option>Area 11</option>
+									<option>Area 12</option>
+									<option>Area 13</option>
+								</select>
+								<input type="button" class="btn btn-home btn-tipo-a" value="Activar filtros" />
+								<hr class="linea-gris" />
+							</div>
+						</div>
 
                         {{ render(controller('YoExistoContenidoBundle:Default:getActividadReciente')) }}
 

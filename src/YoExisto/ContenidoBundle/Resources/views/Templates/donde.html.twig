@@ -6,11 +6,15 @@
 
 {% block contenidointerno %}
     <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
-		
 		<div class="row espacio-a">
-			<div class="col-md-12 espacio-a">
+			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-1000">
 				<h3 class="txt-mayusculas">Generar Control</h3>
 				<span>Llene los datos a continuación para generar control</span>
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-right">
+				<h3>
+					<a href="{{ path('yoexisto_reciente') }}" class="link-yep icono-cerrar" alt=""></a>
+				</h3>
 			</div>
 		</div>
 		<div class="row espacio-a">
@@ -18,7 +22,7 @@
 				<h1 class="txt-mayusculas espacio-a">¿Dónde?</h1>
 				<span class="espacio-a">Cuéntanos que quieres controlar</span>
 				{% image '@YoExistoContenidoBundle/Resources/public/images/donde.png' %}
-				<img src="{{ asset_url }}" title="" alt="" class="img-responsive img-centrar" />
+				<img src="{{ asset_url }}" title="" alt="" class="img-responsive img-centrar img-icono-grande" />
 				{% endimage %}
 			</div>
 
@@ -27,40 +31,40 @@
 
                 {{ form_errors(form) }}
 
-			<div class="col-md-8 txt-mayusculas">
+				<div class="col-md-8 txt-mayusculas">
 
-                {{ form_widget(  form.municipio , {'attr':{'class':'form-control espacio-a'}} ) }}
-                {{ form_widget(  form.area , {'attr':{'class':'form-control espacio-a'}} ) }}
-                {{ form_widget(  form.latitud  ) }}
-                {{ form_widget(  form.longitud  ) }}
+	                {{ form_widget(  form.municipio , {'attr':{'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
+	                {{ form_widget(  form.area , {'attr':{'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
+	                {{ form_widget(  form.latitud  ) }}
+	                {{ form_widget(  form.longitud  ) }}
 
+					<span>Escribe la dirección o geolocaliza tu ubicación</span>
+					<div class="form-group">
 
+	                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Dirección', 'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
 
-				<span>Escribe la dirección o geolocaliza tu ubicación</span>
-				<div class="form-group">
+	                    <div class="btn btn-tipo-a espacio-a btn-geo">
+	                    	<span class="icono-yeapp ico-geo"></span>
+	                    	<span class="texto-geo">Geolocalizar</span>
+	                    </div>
 
-                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Direccion'}} ) }}
-
-                    <div class="btn btn-tipo-a btn-geo">Geolocalizar</div>
-
+					</div>
+					<div id="geomapa" class="geomapa">
+						{# Espacio para el mapa #}
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control espacio-a yea-borde input-yeapp" placeholder="Nombre de la institución (de ser necesario)">
+					</div>
 				</div>
-				<div id="geomapa" class="geomapa">
-					
+				<div class="row espacio-a">
+					<div class="col-md-4 col-md-offset-4 txt-mayusculas">
+						<div class="form-group">
+							<button class="btn btn-lg btn-home btn-tipo-a">Siguiente</button>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Nombre de la institución (de ser necesario)">
-				</div>
-			</div>
-		</div>
-		<div class="row espacio-a">
-			<div class="col-md-4 col-md-offset-4 txt-mayusculas">
-				<div class="form-group">
-					<button class="btn btn-lg btn-home btn-tipo-a">Siguiente</button>
-				</div>
-			</div>
-		</div>
         {{ form_widget(form._token) }}
         </form>
 	</div>
-
+</div>
 {% endblock %}

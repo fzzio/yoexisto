@@ -107,6 +107,15 @@ html, body{
 	box-shadow: none;
 }
 
+.input-yeapp{
+	text-transform: uppercase;
+}
+.input-yeapp:focus{
+	border-color: #f35b00;
+	/*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(243, 91, 0, .6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(243, 91, 0, .6);*/
+	box-shadow: none;
+}
 
 .fondo-cover{
 	position: relative;
@@ -211,7 +220,7 @@ html, body{
 }
 
 #nav-yoexisto ul.navbar-nav li{
-	/*border-right: #575757 1px solid;*/	
+	
 }
 
 #nav-yoexisto ul.navbar-nav li a{
@@ -219,6 +228,10 @@ html, body{
 	text-transform: uppercase;
 	margin-left: 15px;
 	margin-right: 15px;
+}
+
+#nav-yoexisto ul.navbar-nav li.active{
+	/*falta arte de triangulo invertido*/
 }
 
 #nav-yoexisto ul.navbar-nav li.active a{
@@ -246,6 +259,15 @@ html, body{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.lst-perfil.nav > li > a:hover,
+.lst-perfil > li > a:focus{
+	background-color: transparent;
+	background-image: none;
+	border-radius: 0px;
+	border: 1px solid #FFFFFF;
+}
+
 .txt-mayusculas{
 	text-transform: uppercase;
 }
@@ -273,6 +295,7 @@ html, body{
 	position: relative;
 	width: 100%;
 	height: 150px;
+	border: 1px solid #f35b00;
 }
 
 .cont-error{
@@ -340,4 +363,67 @@ i.icono-reporte{
 	width: 100%;
 	height: 80px;
 	overflow: hidden;
+}
+
+.link-yep{
+	display: inline-block;
+}
+
+.icono-cerrar{
+	position: relative;
+	background-repeat: no-repeat;
+	background-image: url('../../../bundles/yoexistocontenido/images/yoexisto-sprite1.png');
+	background-position: -288px -290px;
+	width: 22px;
+	height: 22px;
+}
+
+#reporte-detalle{
+	display: none;
+}
+
+.yea-borde{
+	border-radius: 0px;
+}
+
+.btn-geo{
+	border-radius: 0px;
+}
+
+.img-icono-grande{
+	padding: 30px;
+}
+.texto-geo{
+	position: relative;
+	top: -5px;
+}
+
+.icono-yeapp{
+	background-repeat: no-repeat;
+	background-image: url('../../../bundles/yoexistocontenido/images/yoexisto-sprite1.png');
+	/*background-color: red; */
+	width: 24px;
+	height: 24px;
+	position: relative;
+	display: inline-block;
+}
+
+.icono-yeapp.ico-geo{
+	background-position: -688px -490px;
+}
+
+input::-webkit-input-placeholder {
+   text-transform: uppercase;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+   text-transform: uppercase;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   text-transform: uppercase;
+}
+
+input:-ms-input-placeholder {
+   text-transform: uppercase;
 }

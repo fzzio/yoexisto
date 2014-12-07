@@ -7,13 +7,17 @@
 
 {% block contenidointerno %}
 	<div class="container-fluid">
-		<div class="row espacio-a">
+		<div class="row">
 			<div class="col-md-4 txt-mayusculas">
 				<a href="{{ path('yoexisto_donde') }}" class="btn btn-home btn-tipo-a">Generar Control</a>
 			</div>
 		</div>
 
-		<span class="texto-naranja txt-mayusculas">Actividad Reciente</span>
+		<div class="row espacio-a">
+			<div class="col-md-4 txt-mayusculas">
+				<h3 class="texto-naranja txt-mayusculas">Actividad Reciente</h3>
+			</div>
+		</div>
 
 
         {% for control in controles%}
