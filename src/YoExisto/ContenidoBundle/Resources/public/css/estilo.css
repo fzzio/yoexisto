@@ -408,23 +408,69 @@ i.icono-reporte{
 	display: inline-block;
 }
 
+.form-group-sm{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.form-group-sm .sm-img-foto{
+	display: none;
+}
+
+.form-group-sm .custom-input-file{
+	overflow: hidden;
+	position: relative;
+	cursor: pointer;
+	background-image: url('../../../bundles/yoexistocontenido/images/yoexisto-sprite1.png');
+	background-repeat: no-repeat;
+	/*background-position: -80px -285px;*/
+	background-position: -23px -285px;
+	color: #000;
+	font-size: 12pt;
+	/*width: 40px;*/
+	width: 170px;
+	min-height: 33px;
+	z-index: 10;
+	margin: 0 auto;
+}
+
+.form-group-sm .custom-input-file .input-file{
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	font-size: 10000px;
+	border: 10000px solid transparent;
+	filter: alpha(opacity=0);
+	position: absolute;
+	right: -1000px;
+	top: -1000px;
+	cursor: pointer;
+}
+
 .icono-yeapp.ico-geo{
 	background-position: -688px -490px;
 }
 
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
    text-transform: uppercase;
 }
 
-input:-moz-placeholder { /* Firefox 18- */
+/* Firefox 18- */
+input:-moz-placeholder,
+textarea:-moz-placeholder {
    text-transform: uppercase;
 }
 
-input::-moz-placeholder {  /* Firefox 19+ */
+/* Firefox 19+ */
+input::-moz-placeholder,
+textarea::-moz-placeholder {
    text-transform: uppercase;
 }
 
-input:-ms-input-placeholder {
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
    text-transform: uppercase;
 }
 

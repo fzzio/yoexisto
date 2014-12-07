@@ -206,28 +206,19 @@ function handleNoGeolocation(errorFlag) {
 }
 
 
-
-function mostrarPanel(){
-	$("#mis-reportes").removeClass('col-md-9');
-	$("#mis-reportes").addClass('col-md-6');
-
-	$("#reporte-detalle").show('slow');
-
-
-	$("#reportes-recientes").removeClass('col-md-3');
-	$("#reportes-recientes").addClass('col-md-3');
+function readURL(input) {
+  if (input.files && input.files[0] ) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $(input).closest('.custom-input-file').find('.sm-img-foto')
+      .attr('src', e.target.result)
+      .height(90);
+      $(input).closest('.custom-input-file').find('.sm-img-foto').show();
+    };
+    reader.readAsDataURL(input.files[0]);     
+  }
 }
 
-function ocultarPanel(){
-	$("#mis-reportes").removeClass('col-md-6');
-	$("#mis-reportes").addClass('col-md-9');
-
-	$("#reporte-detalle").hide('slow');
-
-
-	$("#reportes-recientes").removeClass('col-md-3');
-	$("#reportes-recientes").addClass('col-md-3');
-}
 
 
 $(document).ready(function(){
@@ -236,16 +227,6 @@ $(document).ready(function(){
 	$('.btn-geo').click(function() {
 		initializeZ(15,  $("#form_descripcion").val()   );
 	});
-
-	//mostrarPanel();
-
-	$('.row-reporte-reciente').click(function() {
-		//ocultarPanel();
-	});
-	
-
-	
-
 	
 
 });

@@ -30,15 +30,20 @@
             <form id="form"  method="post"   {{ form_enctype(form) }}  action="{{ path('yoexisto_que') }}" >
 			<div class="col-md-8 txt-mayusculas">
 				<div class="form-group espacio-a">
-                    {{ form_widget(  form.titulo, {'attr':{'class':'form-control' , 'placeholder' : 'Ingresa un titulo para el control' }} ) }}
+                    {{ form_widget(  form.titulo, {'attr':{'class':'form-control yea-borde input-yeapp' , 'placeholder' : 'Ingresa un titulo para el control' }} ) }}
 
 				</div>
 				<div class="form-group espacio-a">
-                    {{ form_widget(  form.descripcion, {'attr':{'class':'form-control' , 'placeholder' : 'Cuéntanos lo que está pasando' , 'rows': '5' }} ) }}
+                    {{ form_widget(  form.descripcion, {'attr':{'class':'form-control yea-borde input-yeapp' , 'placeholder' : 'Cuéntanos lo que está pasando' , 'rows': '5' }} ) }}
 
 				</div>
-				<div class="form-group espacio-a">
-                    {{ form_widget(  form.file , {'attr':{'class':'form-control' , 'placeholder' : 'Suba una foto' }} ) }}
+				<div class="form-group form-group-sm espacio-a">
+					<span class="lbl-form-sm" for="sm_input_file_1">Suba una foto:</span>
+					<div class="custom-input-file">
+                    	{{ form_widget(  form.file , {'attr':{'id':'sm_input_file_1' , 'class':'form-control input-file' , 'placeholder' : 'Suba una foto', 'name':'sm_input_file_1', 'onchange':'readURL(this);' }} ) }}
+						<img id="sm-img-foto-1" class="sm-img-foto img-responsive" src="" alt="" />
+					</div>
+
 
 				</div>
             </div>
