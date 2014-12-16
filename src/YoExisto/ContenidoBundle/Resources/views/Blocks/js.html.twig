@@ -1,3 +1,8 @@
+<script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<script type="text/javascript" src="https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js"></script>
+{# <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> #}
+
 {% javascripts 
     '@YoExistoContenidoBundle/Resources/public/js/jquery-1.9.1.min.js'
     '@YoExistoContenidoBundle/Resources/public/js/bootstrap.js'
@@ -10,11 +15,3 @@
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-
-<script type="text/javascript">
-    
-
-</script>
-

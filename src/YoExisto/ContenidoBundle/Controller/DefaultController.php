@@ -62,6 +62,7 @@ class DefaultController extends Controller
             ->add('password', 'password')
             ->add('email', 'text')
             ->add('cedula', 'text')
+            ->add('foto', 'file' , array('required' => true))
             ->add('save', 'submit', array('label' => 'Create Task'))
             ->getForm();
 
@@ -77,7 +78,6 @@ class DefaultController extends Controller
 
 
         if ($form->isValid()  ) {
-
 
 
             if (!$existe_correo) {
@@ -102,7 +102,11 @@ class DefaultController extends Controller
             }
 
 
+
             if( !$existe_username && !$existe_correo && !$existe_cedula){
+                
+                $usuario->upload( $this->get('kernel')->getRootDir().'/../web/');
+
                 $userManager = $this->get('fos_user.user_manager');
                 $user = $userManager->createUser();
                 $user->setUsername(  $usuario->getUsername() );
@@ -110,6 +114,7 @@ class DefaultController extends Controller
                 $user->setCedula($usuario->getCedula());
                 $user->setPassword($usuario->getPassword());
                 $user->setPlainPassword($usuario->getPassword());
+                $user->setFoto($usuario->getFoto());
                 $user->setEnabled(true);
 
                 $userManager->updateUser($user);

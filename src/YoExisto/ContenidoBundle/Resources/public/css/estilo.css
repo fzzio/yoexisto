@@ -176,9 +176,9 @@ html, body{
 	color: #ffffff;
 }
 	.btn-tipo-a:hover, .btn-tipo-a:focus, .btn-tipo-a:active{
-		background-color: #F2F1ED;
+		background-color: #b33700;
 		border-color: #f35b00;
-		color: #f35b00;
+		color: #FFFFFF;
 	}
 
 .btn-tipo-b{
@@ -361,7 +361,7 @@ i.icono-reporte{
 
 .contenedor-img-reciente{
 	width: 100%;
-	height: 40px;
+	height: 150px;
 	overflow: hidden;
 }
 
@@ -388,6 +388,7 @@ i.icono-reporte{
 
 .btn-geo{
 	border-radius: 0px;
+	/*width: 100%;*/
 }
 
 .img-icono-grande{

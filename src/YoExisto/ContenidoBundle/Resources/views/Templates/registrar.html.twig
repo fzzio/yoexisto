@@ -55,9 +55,12 @@
 											    <i class="icono icono-cedula"></i>
                                                 {{ form_widget(form.cedula,  {'attr': {'class': 'form-control input-home' , placeholder: '# CÉDULA', maxlength:'10' }}  ) }}
 											</div>
-                                            
-											<div class="col-sm-12 text-center">
-												<input type="file" class="input-home-file" />
+											<div class="form-group form-group-sm espacio-a">
+												<span class="lbl-form-sm" for="sm_input_file_1">Suba una foto:</span>
+												<div class="custom-input-file">
+							                    	{{ form_widget(  form.foto , {'attr':{'id':'sm_input_file_1' , 'class':'form-control input-file input-home-file' , 'placeholder' : 'Suba una foto', 'name':'sm_input_file_1', 'onchange':'readURL(this);' }} ) }}
+													<img id="sm-img-foto-1" class="sm-img-foto img-responsive" src="" alt="" />
+												</div>
 											</div>
 											
 											<div class="col-sm-8 col-sm-offset-2 text-center">

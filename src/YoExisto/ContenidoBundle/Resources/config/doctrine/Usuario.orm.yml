@@ -14,6 +14,10 @@ YoExisto\ContenidoBundle\Entity\Usuario:
             type: string
             nullable: true
 
+        foto:
+            type: text
+            nullable: true
+
 
         activacion:
             type: string

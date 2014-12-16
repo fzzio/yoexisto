@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="row espacio-a">
-			<div class="col-md-4 text-center">
+			<div class="col-sm-4 text-center">
 				<h1 class="txt-mayusculas espacio-a">¿Dónde?</h1>
 				<span class="espacio-a">Cuéntanos que quieres controlar</span>
 				{% image '@YoExistoContenidoBundle/Resources/public/images/donde.png' %}
@@ -27,44 +27,223 @@
 			</div>
 
 
-            <form   method="post" action="{{ path('yoexisto_donde') }}" >
+            <form class="col-sm-8 txt-mayusculas"  method="post" action="{{ path('yoexisto_donde') }}" >
+            	<div class="container-fluid">
+            		<div class="row">
+                		{{ form_errors(form) }}            			
+            		</div>
 
-                {{ form_errors(form) }}
+            		<div class="row">
+            			<div class="col-sm-12">
+	                		{{ form_widget(  form.municipio , {'attr':{'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
+            			</div>
+            		</div>
+            		<div class="row">
+            			<div class="col-sm-12">
+	                		{{ form_widget(  form.area , {'attr':{'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
+            			</div>
+            		</div>
+            		<div class="row">
+            			<div class="col-sm-12">
+            			</div>
+            		</div>
+            		<div class="row">
+            			<div class="col-sm-12">
+		                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geo">
+		                    	<span class="icono-yeapp ico-geo"></span>
+		                    	<span class="texto-geo">Geolocalizar control</span>
+		                    </a>
+            			</div>
+            		</div>
+            		<div class="row espacio-a">
+            			<div class="col-sm-12">
+							<div id="geomapa" class="geomapa">
+								{# Espacio para el mapa #}
+							</div>
+            			</div>
+            		</div>
+            		<div class="row espacio-a">
+            			<div class="col-sm-12">
+			                <div class="form-group">
+			                	<span>O escríbela y buscala</span>
+			                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Dirección', 'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
 
-				<div class="col-md-8 txt-mayusculas">
+			                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geobuscar">
+			                    	<span class="icono-yeapp ico-geo"></span>
+			                    	<span class="texto-geo">Buscar control</span>
+			                    </a>
+							</div>
+            			</div>
+            		</div>
 
-	                {{ form_widget(  form.municipio , {'attr':{'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
-	                {{ form_widget(  form.area , {'attr':{'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
-	                {{ form_widget(  form.latitud  ) }}
-	                {{ form_widget(  form.longitud  ) }}
-
-					<span>Escribe la dirección o geolocaliza tu ubicación</span>
-					<div class="form-group">
-
-	                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Dirección', 'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
-
-	                    <div class="btn btn-tipo-a espacio-a btn-geo">
-	                    	<span class="icono-yeapp ico-geo"></span>
-	                    	<span class="texto-geo">Geolocalizar</span>
-	                    </div>
-
-					</div>
-					<div id="geomapa" class="geomapa">
-						{# Espacio para el mapa #}
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control espacio-a yea-borde input-yeapp" placeholder="Nombre de la institución (de ser necesario)">
-					</div>
-				</div>
-				<div class="row espacio-a">
-					<div class="col-md-4 col-md-offset-4 txt-mayusculas">
-						<div class="form-group">
-							<button class="btn btn-lg btn-home btn-tipo-a">Siguiente</button>
+            		
+            		<div class="row">
+            			<div class="col-sm-12">
+							<div class="form-group">
+								<input type="text" class="form-control espacio-a yea-borde input-yeapp" placeholder="Nombre de la institución (de ser necesario)">
+							</div>
+            			</div>
+            		</div>
+            		<div class="row">
+            			<div class="col-sm-12">
+							{{ form_widget(  form.latitud  ) }}
+		                	{{ form_widget(  form.longitud  ) }}
+            			</div>
+            		</div>
+					
+					<div class="row espacio-a">
+						<div class="col-md-4 col-md-offset-4 txt-mayusculas">
+							<div class="form-group">
+								<button class="btn btn-lg btn-home btn-tipo-a">Siguiente</button>
+							</div>
 						</div>
 					</div>
-				</div>
+            	</div>
+
+
+				
+
+					
         {{ form_widget(form._token) }}
         </form>
 	</div>
 </div>
+{% endblock %}
+
+
+{% block masscripts %}
+	<script type="text/javascript">
+		//////////////////////////// MAPBOX //////////////////////////
+
+		function obtenerDireccion(longitud, latitud){
+		  var direccion = "";
+		    $.ajax({
+		        url: 'http://api.tiles.mapbox.com/v4/geocode/mapbox.places/' + longitud + "," + latitud + '.json?access_token=' + L.mapbox.accessToken,
+		        type: 'get',
+		        async: false,
+		        data: '',
+		        dataType: "json",
+		        success: function (respuesta) {
+		          //console.log(respuesta.features[0].place_name);          
+		          //console.log(respuesta);
+		          direccion = respuesta.features[0].place_name;
+		        }, 
+		        error: function (error) {
+		          console.log("ERROR: " + error);
+		        }
+		  });
+
+		  return direccion;
+		}
+
+		// Provide your access token
+		L.mapbox.accessToken = 'pk.eyJ1IjoiZnp6aW8iLCJhIjoiYkhyNENPcyJ9.wwMOOPk4m0Lh0PqEZHWDAA';
+		var map, geocoder, marker, myLayer, feature ;
+
+		map = L.mapbox.map('geomapa', 'fzzio.kgg79o11');
+		map.scrollWheelZoom.disable();
+		myLayer = L.mapbox.featureLayer().addTo(map);
+
+		// Para busquedas de textos
+		geocoder = L.mapbox.geocoder('mapbox.places-v1');
+		feature = L.mapbox.featureLayer();
+
+
+		marker = L.marker(new L.LatLng(-2.1709978999999997, -79.9223592), {
+		    icon: L.mapbox.marker.icon({
+		        'marker-color': 'ff8888',
+		        'marker-symbol': 'star'
+		    }),
+		    draggable: true
+		});
+
+		//marker.addTo(map);
+
+		// Once we've got a position, zoom and center the map
+		// on it, and add a single marker.
+		map.on('locationfound', function(e) {
+		    map.fitBounds(e.bounds);
+
+		    
+		    myLayer.setGeoJSON({
+		        type: 'Feature',
+		        geometry: {
+		            type: 'Point',
+		            coordinates: [e.latlng.lng, e.latlng.lat]
+		        },
+		        properties: {
+		            'title': '',
+		            'marker-color': '#ff8888',
+		            'marker-symbol': 'star'
+		        }
+		    });
+
+		    var direccion = obtenerDireccion(marker.getLatLng().lng, marker.getLatLng().lat);
+		    $("#form_descripcion").val(direccion);
+
+		    map.setZoom(17);
+
+		    //alert("Longitud: " + e.latlng.lng + ", Latitud: " + e.latlng.lat);
+		});
+
+		// If the user chooses not to allow their location
+		// to be shared, display an error message.
+		map.on('locationerror', function() {
+		    $('#btn-geo .texto-geo').text("Position could not be found");
+		});
+
+
+		// Add custom popups to each using our custom feature properties
+		myLayer.on('layeradd', function(e) {
+
+		    marker = e.layer;
+		    feature = marker.feature;
+		    marker.dragging.enable();
+		    
+		    marker.on('dragend', ondragend);
+		});
+
+		marker.on('dragend', ondragend);
+
+
+		function ondragend(e) {
+		    var direccion = obtenerDireccion(marker.getLatLng().lng, marker.getLatLng().lat);
+		    $("#form_descripcion").val(direccion);
+		}
+
+		function showMap(err, data) {
+		    // The geocoder can return an area, like a city, or a
+		    // point, like an address. Here we handle both cases,
+		    // by fitting the map bounds to an area or zooming to a point.
+		    if (data.lbounds) {
+		        map.fitBounds(data.lbounds);
+		    } else if (data.latlng) {
+		        map.setView([data.latlng[0], data.latlng[1]], 12);
+		    }
+
+		    myLayer.setGeoJSON({
+		        type: 'Feature',
+		        geometry: {
+		            type: 'Point',
+		            coordinates: [data.latlng[1], data.latlng[0]]
+		        },
+		        properties: {
+		            'title': '',
+		            'marker-color': '#ff8888',
+		            'marker-symbol': 'star'
+		        }
+		    });
+
+		    var direccion = obtenerDireccion(marker.getLatLng().lng, marker.getLatLng().lat);
+		    $("#form_descripcion").val(direccion);
+
+		    //map.setView(marker.getLatLng().lng, marker.getLatLng().lat, 12);
+		    map.setZoom(12);
+
+
+		    //alert("Longitud: " + data.latlng[1] + ", Latitud: " + data.latlng[0]);
+		}
+
+		//////////////////////////// MAPBOX //////////////////////////
+	</script>
 {% endblock %}
