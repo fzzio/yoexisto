@@ -18,3 +18,10 @@ YoExisto\ContenidoBundle\Entity\Area:
             type: text
             nullable: true
 
+    manyToOne:
+        municipio:
+            targetEntity: YoExisto\ContenidoBundle\Entity\Municipio
+            inversedBy: areas
+            joinColumn:
+                name: municipio_id
+                referencedColumnName: id

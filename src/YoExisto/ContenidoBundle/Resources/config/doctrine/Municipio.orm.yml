@@ -18,3 +18,9 @@ YoExisto\ContenidoBundle\Entity\Municipio:
             type: text
             nullable: true
 
+
+
+    oneToMany:
+        areas:
+            targetEntity: YoExisto\ContenidoBundle\Entity\Area
+            mappedBy: municipio

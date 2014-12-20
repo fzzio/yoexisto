@@ -24,6 +24,11 @@ class Area
      */
     private $descripcion;
 
+    /**
+     * @var \YoExisto\ContenidoBundle\Entity\Municipio
+     */
+    private $municipio;
+
 
     /**
      * Get id
@@ -81,8 +86,26 @@ class Area
         return $this->descripcion;
     }
 
-    public function __toString(){
-        return $this->nombre;
+    /**
+     * Set municipio
+     *
+     * @param \YoExisto\ContenidoBundle\Entity\Municipio $municipio
+     * @return Area
+     */
+    public function setMunicipio(\YoExisto\ContenidoBundle\Entity\Municipio $municipio = null)
+    {
+        $this->municipio = $municipio;
+    
+        return $this;
     }
 
+    /**
+     * Get municipio
+     *
+     * @return \YoExisto\ContenidoBundle\Entity\Municipio 
+     */
+    public function getMunicipio()
+    {
+        return $this->municipio;
+    }
 }

@@ -56,23 +56,21 @@
 								<h4 class="txt-mayusculas">
 									Filtrar búsqueda
 								</h4>
-								<select class="form-control espacio-a yea-borde input-yeapp oscuro">
-									<option>Municipio</option>
-									<option>Municipio 11</option>
-									<option>Municipio 12</option>
-									<option>Municipio 13</option>
-								</select>
-								<select class="form-control espacio-a yea-borde input-yeapp oscuro">
-									<option>Area</option>
-									<option>Area 11</option>
-									<option>Area 12</option>
-									<option>Area 13</option>
+								<select id="filtro_municipio" onchange="getAreasPorMunicipio(this);" class="form-control espacio-a yea-borde input-yeapp oscuro">
+
+
+                                    {{ render(controller('YoExistoContenidoBundle:Filtro:getMunicipios')) }}
+
+
+                                </select>
+								<select  id="filtro_areas"  onchange="getActividadPorArea( this )" class="form-control espacio-a yea-borde input-yeapp oscuro">
+									<option>-</option>
 								</select>
 								<hr class="linea-gris" />
 							</div>
 						</div>
 					</div>
-					<div class="container-fluid fondo-gris reportes-recientes-cont">
+					<div  id="actividadReciente" class="container-fluid fondo-gris reportes-recientes-cont">
                         {{ render(controller('YoExistoContenidoBundle:Default:getActividadReciente')) }}
 					</div>
 				</div>

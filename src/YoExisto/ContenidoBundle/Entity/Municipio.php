@@ -24,7 +24,19 @@ class Municipio
      */
     private $descripcion;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $areas;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->areas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -81,8 +93,36 @@ class Municipio
         return $this->descripcion;
     }
 
-    public function __toString(){
-        return $this->nombre;
+    /**
+     * Add areas
+     *
+     * @param \YoExisto\ContenidoBundle\Entity\Area $areas
+     * @return Municipio
+     */
+    public function addArea(\YoExisto\ContenidoBundle\Entity\Area $areas)
+    {
+        $this->areas[] = $areas;
+    
+        return $this;
     }
 
+    /**
+     * Remove areas
+     *
+     * @param \YoExisto\ContenidoBundle\Entity\Area $areas
+     */
+    public function removeArea(\YoExisto\ContenidoBundle\Entity\Area $areas)
+    {
+        $this->areas->removeElement($areas);
+    }
+
+    /**
+     * Get areas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAreas()
+    {
+        return $this->areas;
+    }
 }
