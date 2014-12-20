@@ -112,8 +112,28 @@ class DefaultController extends Controller
                 $user->setUsername(  $usuario->getUsername() );
                 $user->setEmail($usuario->getEmail());
                 $user->setCedula($usuario->getCedula());
+
+
+
                 $user->setPassword($usuario->getPassword());
                 $user->setPlainPassword($usuario->getPassword());
+
+
+
+
+
+
+                $factory = $this->get('security.encoder_factory');
+
+                $encoder = $factory->getEncoder($user);
+
+                $pass = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
+                $user->setPassword(  $pass );
+                $user->setEnabled(  1 );
+
+
+
+
                 $user->setFoto($usuario->getFoto());
                 $user->setEnabled(true);
 
