@@ -10,6 +10,18 @@ yoexisto_registrar:
     path:      /registrar
     defaults:  { _controller: YoExistoContenidoBundle:Default:registrar }
 
+
+yoexisto_activar:
+    path:      /activar/{codigo}
+    defaults:  { _controller: YoExistoContenidoBundle:Default:activar }
+
+
+yoexisto_enviar_codigo:
+    path:      /enviarActivacion
+    defaults:  { _controller: YoExistoContenidoBundle:Default:testCodigo }
+
+
+
 yoexisto_ready:
     path:      /ready
     defaults:  { _controller: YoExistoContenidoBundle:Default:ready }

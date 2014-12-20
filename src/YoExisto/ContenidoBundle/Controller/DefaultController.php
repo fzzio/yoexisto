@@ -27,6 +27,30 @@ class DefaultController extends Controller
         return $this->render('YoExistoContenidoBundle:Templates:ready.html.twig');
     }
 
+    public function enviaMail(  $usuario  )
+    {
+
+
+
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Codigo de activacion')
+            ->setFrom(array('admin@yoexisto.com' => 'demo'))
+            ->setTo(  $usuario->getEmail() )
+            ->setBody(
+               'active su codigo aqui <a  href="'. $url = $this->generateUrl('yoexisto_activar', array('codigo' => $usuario->getActivacion()), true) .'" > Activar '
+
+            )
+            ->setContentType("text/html");
+
+
+        if ($this->get('mailer')->send($message)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     public function loginAction()
     {
@@ -49,6 +73,35 @@ class DefaultController extends Controller
             'error'         => $error
         ));
     }
+
+
+    public function activarAction($codigo)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $em->getRepository("YoExistoContenidoBundle:Usuario")->findOneBy(array("activacion"=> $codigo ));
+
+        if(!$usuario){
+            return new RedirectResponse($this->generateUrl('activacion_erronea'));
+        }else{
+
+            $usuario->setLocked(0);
+            $usuario->setEnabled(1);
+
+            $em->flush();
+            return new RedirectResponse($this->generateUrl('yoexisto_home'));
+        }
+
+    }
+
+
+
+
+
+
+
+
+
 
     public function registrarAction(Request $request)
     {
@@ -129,7 +182,12 @@ class DefaultController extends Controller
 
                 $pass = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
                 $user->setPassword(  $pass );
-                $user->setEnabled(  1 );
+                $user->setEnabled(  0 );
+                $user->setLocked(  1 );
+
+                $generatedKey = sha1(mt_rand(10000,99999).time().$usuario->getEmail());
+
+                $user->setActivacion( $generatedKey );
 
 
 
@@ -144,6 +202,9 @@ class DefaultController extends Controller
                     'success',
                     'Usuario Registrado Correctamente'
                 );
+
+
+                $this->enviaMail(  $usuario );
 
 
                 return $this->redirect($this->generateUrl('yoexisto_ready'));

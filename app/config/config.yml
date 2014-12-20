@@ -89,3 +89,11 @@ stof_doctrine_extensions:
         default:
             timestampable: true # not needed: listeners are not enabled by default
             sluggable: true
+
+swiftmailer:
+    transport:  smtp
+    port:       587
+    host:       mail.misp.cl
+    username:   orrala@celmedia.com
+    password:   iglr15ps
+    spool:     { type: memory }
