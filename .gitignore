@@ -10,7 +10,7 @@ web/bundles/*
 web/css/*
 web/js/*
 web/images/*
-web/uploads/*
+#web/uploads/*
 
 
 # -- Composer -----------------------------------------
