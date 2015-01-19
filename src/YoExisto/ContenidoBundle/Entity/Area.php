@@ -108,4 +108,10 @@ class Area
     {
         return $this->municipio;
     }
+
+
+
+    public function __toString(){
+        return "" . $this->nombre;
+    }
 }

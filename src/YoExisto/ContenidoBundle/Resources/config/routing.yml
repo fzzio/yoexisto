@@ -28,6 +28,13 @@ yoexisto_ready:
 
 
 
+activacion_erronea:
+    path:      /activacionerronea
+    defaults:  { _controller: YoExistoContenidoBundle:Default:activacionErronea }
+    options:
+        expose: true
+
+
 
 #filtros de busqueda
 yoexisto_buscar_areas:

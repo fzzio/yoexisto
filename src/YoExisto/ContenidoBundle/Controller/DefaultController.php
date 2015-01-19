@@ -27,6 +27,13 @@ class DefaultController extends Controller
         return $this->render('YoExistoContenidoBundle:Templates:ready.html.twig');
     }
 
+
+
+    public function activacionErroneaAction(){
+
+        return $this->render('YoExistoContenidoBundle:Templates:activacionerror.html.twig');
+    }
+
     public function enviaMail(  $usuario  )
     {
 
