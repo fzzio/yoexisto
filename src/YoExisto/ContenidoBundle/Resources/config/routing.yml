@@ -108,6 +108,12 @@ yoexisto_reporte_detalle:
     options:
         expose: true
 
+yoexisto_votar_control:
+    path:      /votar/{id_control}
+    defaults:  { _controller: YoExistoContenidoBundle:Default:votarControl }
+    options:
+        expose: true
+
 
 login_check:
     path:      /login_check

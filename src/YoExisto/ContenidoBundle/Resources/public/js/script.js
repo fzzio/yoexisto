@@ -41,6 +41,32 @@ function cerrarDetalle(){
     $("#reportes-recientes").addClass('col-md-4');
 }
 
+
+
+function votar( id_reporte ){
+
+
+    $.ajax({
+        url: Routing.generate('yoexisto_votar_control' , { id_control : id_reporte  }),
+        type: 'POST',
+        async: true,
+        dataType: "json",
+        success: function (respuesta) {
+
+            if(  respuesta.codigo == 1 ){
+                $("#drp-votos").html( respuesta.votos );
+                $("#btn_voto").hide();
+            }
+
+
+        },
+        error: function (error) {
+            console.log("ERROR: " + error);
+        }
+    });
+
+}
+
 function verReporte(reporte){
 
     //console.log("Ver detalles de reporte: " + reporte);
@@ -71,6 +97,15 @@ function verReporte(reporte){
                 $("#drp-descripcion").text( respuesta.control.descripcion );
                 $("#drp-imagen").attr("src", "/yoexistoapp/web/uploads/" + respuesta.control.imagen); //fzzio verificar
                 $("#drp-votos").text( respuesta.control.votos );
+
+                if(  respuesta.control.voto_registrado === "si" ){
+                    $("#btn_voto").hide();
+                }else{
+                    $("#btn_voto").show();
+                    $("#btn_voto").click(function(){
+                        votar( respuesta.control.idcontol);
+                    });
+                }
 
 
                 $("#reporte-detalle").show();

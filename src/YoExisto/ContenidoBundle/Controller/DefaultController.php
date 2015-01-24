@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use YoExisto\ContenidoBundle\Entity\Voto;
 
 
 class DefaultController extends Controller
@@ -220,7 +220,52 @@ class DefaultController extends Controller
 
     }
 
+
+    public function votarControlAction($id_control){
+
+        $currentUser  = $this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+
+        $control = $em->getRepository("YoExistoContenidoBundle:Control")->find($id_control);
+
+        foreach(   $control->getVotos() as $votoBuscar ){
+
+            if( $votoBuscar->getUsuario() == $currentUser->getUsername() ){
+                return new JsonResponse(array(
+                    'codigo' => 0,
+                    'Mensaje' => "Voto ya registrado "
+                ), 200); //codigo de error diferente
+            }
+        }
+
+
+        $voto = new Voto();
+        $voto->setUsuario( $currentUser->getUsername()  );
+        $voto->setDescripcion("ok");
+        $voto->setValor(1);
+
+        $control->addVoto($voto);
+
+        $em->flush();
+
+
+        return new JsonResponse(array(
+            'codigo' => 1,
+            'votos'  => "" . $control->getVotos()->count(),
+            'mensaje' => "Ok"
+        ), 200); //codigo de error diferente
+
+    }
+
+
+
     public function getDetalleReporteAction(Request $request){
+
+
+        $currentUser  = $this->get('security.context')->getToken()->getUser();
+
+
 
         if ($request->isMethod('POST')) {
             $id_control = intval($request->request->get('idReporte'));
@@ -235,6 +280,15 @@ class DefaultController extends Controller
 
             if ($controlRecibido) {
 
+                $voto_registrado = "no";
+
+                if(  $currentUser )
+                foreach(   $controlRecibido->getVotos() as $voto ){
+
+                    if( $voto->getUsuario() == $currentUser->getUsername() ){
+                        $voto_registrado = "si";
+                    }
+                }
 
                 $arrayContol = array(
                     'idcontol' => $controlRecibido->getId(),
@@ -244,11 +298,11 @@ class DefaultController extends Controller
                     'municipio'=> $controlRecibido->getDonde()->getMunicipio()->getNombre(),
                     'area'=> $controlRecibido->getDonde()->getArea()->getNombre(),
                     'direccion'=> $controlRecibido->getDonde()->getDescripcion(),
-                    //'institucion'=> $controlRecibido->getDonde()->getInstitucion,
                     'institucion'=> "",
                     'descripcion'=> $controlRecibido->getQue()->getDescripcion(),
                     'imagen'=> $controlRecibido->getQue()->getArchivo(),
-                    'votos'=> $controlRecibido->getPositivos()
+                    'votos'=>  $controlRecibido->getVotos()->count(),
+                    'voto_registrado'=>  $voto_registrado,
                 );
                 
                 return new JsonResponse(array(
