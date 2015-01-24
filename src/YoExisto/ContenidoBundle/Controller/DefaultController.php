@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use YoExisto\ContenidoBundle\Entity\Voto;
 
 
 class DefaultController extends Controller
@@ -21,6 +21,9 @@ class DefaultController extends Controller
     {
         return $this->render('YoExistoContenidoBundle:Default:index.html.twig', array('name' => $name));
     }
+
+
+
 
     public function readyAction()
     {
@@ -34,197 +37,9 @@ class DefaultController extends Controller
         return $this->render('YoExistoContenidoBundle:Templates:activacionerror.html.twig');
     }
 
-    public function enviaMail(  $usuario  )
-    {
 
 
 
-
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Codigo de activacion')
-            ->setFrom(array('admin@yoexisto.com' => 'demo'))
-            ->setTo(  $usuario->getEmail() )
-            ->setBody(
-               'active su codigo aqui <a  href="'. $url = $this->generateUrl('yoexisto_activar', array('codigo' => $usuario->getActivacion()), true) .'" > Activar '
-
-            )
-            ->setContentType("text/html");
-
-
-        if ($this->get('mailer')->send($message)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-    public function loginAction()
-    {
-
-
-        $request = $this->getRequest();
-        $session = $request->getSession();
-
-        // get the login error if there is one
-        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-        }
-
-
-
-        return $this->render('YoExistoContenidoBundle:Templates:login.html.twig'  , array(
-            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-            'error'         => $error
-        ));
-    }
-
-
-    public function activarAction($codigo)
-    {
-
-        $em = $this->getDoctrine()->getManager();
-        $usuario = $em->getRepository("YoExistoContenidoBundle:Usuario")->findOneBy(array("activacion"=> $codigo ));
-
-        if(!$usuario){
-            return new RedirectResponse($this->generateUrl('activacion_erronea'));
-        }else{
-
-            $usuario->setLocked(0);
-            $usuario->setEnabled(1);
-
-            $em->flush();
-            return new RedirectResponse($this->generateUrl('yoexisto_home'));
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-    public function registrarAction(Request $request)
-    {
-
-        $session = $this->container->get('session');
-        $em = $this->getDoctrine()->getManager();
-
-        $usuario = new Usuario();
-        $form = $this->createFormBuilder($usuario)
-            ->add('username', 'text')
-            ->add('password', 'password')
-            ->add('email', 'text')
-            ->add('cedula', 'text')
-            ->add('foto', 'file' , array('required' => true))
-            ->add('save', 'submit', array('label' => 'Create Task'))
-            ->getForm();
-
-
-        $form->handleRequest($request);
-
-
-
-
-        $existe_username  =  $em->getRepository('YoExistoContenidoBundle:Usuario')->findOneBy(array("username" => $usuario->getUsername()  ));
-        $existe_correo    =  $em->getRepository('YoExistoContenidoBundle:Usuario')->findOneBy(array("email"    => $usuario->getEmail()  ));
-        $existe_cedula    =  $em->getRepository('YoExistoContenidoBundle:Usuario')->findOneBy(array("cedula"    => $usuario->getCedula() ));
-
-
-        if ($form->isValid()  ) {
-
-
-            if (!$existe_correo) {
-                $session->getFlashBag()->add(
-                    'error',
-                    'El correo ya existe'
-                );
-            }
-
-            if (!$existe_username) {
-                $session->getFlashBag()->add(
-                    'error',
-                    'El Usuario ya existe'
-                );
-            }
-
-            if (!$existe_cedula) {
-                $session->getFlashBag()->add(
-                    'error',
-                    'La cedula ya ha diso registrada'
-                );
-            }
-
-
-
-            if( !$existe_username && !$existe_correo && !$existe_cedula){
-                
-                $usuario->upload( $this->get('kernel')->getRootDir().'/../web/');
-
-                $userManager = $this->get('fos_user.user_manager');
-                $user = $userManager->createUser();
-                $user->setUsername(  $usuario->getUsername() );
-                $user->setEmail($usuario->getEmail());
-                $user->setCedula($usuario->getCedula());
-
-
-
-                $user->setPassword($usuario->getPassword());
-                $user->setPlainPassword($usuario->getPassword());
-
-
-
-
-
-
-                $factory = $this->get('security.encoder_factory');
-
-                $encoder = $factory->getEncoder($user);
-
-                $pass = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
-                $user->setPassword(  $pass );
-                $user->setEnabled(  0 );
-                $user->setLocked(  1 );
-
-                $generatedKey = sha1(mt_rand(10000,99999).time().$usuario->getEmail());
-
-                $user->setActivacion( $generatedKey );
-
-
-
-
-                $user->setFoto($usuario->getFoto());
-                $user->setEnabled(true);
-
-                $userManager->updateUser($user);
-
-
-                $session->getFlashBag()->add(
-                    'success',
-                    'Usuario Registrado Correctamente'
-                );
-
-
-                $this->enviaMail(  $usuario );
-
-
-                return $this->redirect($this->generateUrl('yoexisto_ready'));
-            }
-
-
-        }
-
-
-        return $this->render('YoExistoContenidoBundle:Templates:registrar.html.twig' , array(
-            'form' => $form->createView()
-        ));
-    }
 
     public function dashboardAction()
     {
@@ -405,7 +220,52 @@ class DefaultController extends Controller
 
     }
 
+
+    public function votarControlAction($id_control){
+
+        $currentUser  = $this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+
+        $control = $em->getRepository("YoExistoContenidoBundle:Control")->find($id_control);
+
+        foreach(   $control->getVotos() as $votoBuscar ){
+
+            if( $votoBuscar->getUsuario() == $currentUser->getUsername() ){
+                return new JsonResponse(array(
+                    'codigo' => 0,
+                    'Mensaje' => "Voto ya registrado "
+                ), 200); //codigo de error diferente
+            }
+        }
+
+
+        $voto = new Voto();
+        $voto->setUsuario( $currentUser->getUsername()  );
+        $voto->setDescripcion("ok");
+        $voto->setValor(1);
+
+        $control->addVoto($voto);
+
+        $em->flush();
+
+
+        return new JsonResponse(array(
+            'codigo' => 1,
+            'votos'  => "" . $control->getVotos()->count(),
+            'mensaje' => "Ok"
+        ), 200); //codigo de error diferente
+
+    }
+
+
+
     public function getDetalleReporteAction(Request $request){
+
+
+        $currentUser  = $this->get('security.context')->getToken()->getUser();
+
+
 
         if ($request->isMethod('POST')) {
             $id_control = intval($request->request->get('idReporte'));
@@ -420,6 +280,15 @@ class DefaultController extends Controller
 
             if ($controlRecibido) {
 
+                $voto_registrado = "no";
+
+                if(  $currentUser )
+                foreach(   $controlRecibido->getVotos() as $voto ){
+
+                    if( $voto->getUsuario() == $currentUser->getUsername() ){
+                        $voto_registrado = "si";
+                    }
+                }
 
                 $arrayContol = array(
                     'idcontol' => $controlRecibido->getId(),
@@ -429,11 +298,11 @@ class DefaultController extends Controller
                     'municipio'=> $controlRecibido->getDonde()->getMunicipio()->getNombre(),
                     'area'=> $controlRecibido->getDonde()->getArea()->getNombre(),
                     'direccion'=> $controlRecibido->getDonde()->getDescripcion(),
-                    //'institucion'=> $controlRecibido->getDonde()->getInstitucion,
                     'institucion'=> "",
                     'descripcion'=> $controlRecibido->getQue()->getDescripcion(),
                     'imagen'=> $controlRecibido->getQue()->getArchivo(),
-                    'votos'=> $controlRecibido->getPositivos()
+                    'votos'=>  $controlRecibido->getVotos()->count(),
+                    'voto_registrado'=>  $voto_registrado,
                 );
                 
                 return new JsonResponse(array(

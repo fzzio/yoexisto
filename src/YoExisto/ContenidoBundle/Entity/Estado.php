@@ -5,9 +5,9 @@ namespace YoExisto\ContenidoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Municipio
+ * Estado
  */
-class Municipio
+class Estado
 {
     /**
      * @var integer
@@ -25,18 +25,11 @@ class Municipio
     private $descripcion;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \YoExisto\ContenidoBundle\Entity\Area
      */
-    private $areas;
+    private $area;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->areas = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
     /**
      * Get id
      *
@@ -51,7 +44,7 @@ class Municipio
      * Set nombre
      *
      * @param string $nombre
-     * @return Municipio
+     * @return Estado
      */
     public function setNombre($nombre)
     {
@@ -74,7 +67,7 @@ class Municipio
      * Set descripcion
      *
      * @param string $descripcion
-     * @return Municipio
+     * @return Estado
      */
     public function setDescripcion($descripcion)
     {
@@ -94,42 +87,25 @@ class Municipio
     }
 
     /**
-     * Add areas
+     * Set area
      *
-     * @param \YoExisto\ContenidoBundle\Entity\Area $areas
-     * @return Municipio
+     * @param \YoExisto\ContenidoBundle\Entity\Area $area
+     * @return Estado
      */
-    public function addArea(\YoExisto\ContenidoBundle\Entity\Area $areas)
+    public function setArea(\YoExisto\ContenidoBundle\Entity\Area $area = null)
     {
-        $this->areas[] = $areas;
+        $this->area = $area;
     
         return $this;
     }
 
     /**
-     * Remove areas
+     * Get area
      *
-     * @param \YoExisto\ContenidoBundle\Entity\Area $areas
+     * @return \YoExisto\ContenidoBundle\Entity\Area 
      */
-    public function removeArea(\YoExisto\ContenidoBundle\Entity\Area $areas)
+    public function getArea()
     {
-        $this->areas->removeElement($areas);
+        return $this->area;
     }
-
-    /**
-     * Get areas
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAreas()
-    {
-        return $this->areas;
-    }
-
-
-
-    public function __toString(){
-        return "" . $this->nombre;
-    }
-
 }

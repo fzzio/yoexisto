@@ -1,0 +1,15 @@
+YoExisto\ContenidoBundle\Entity\Usuario:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
+    properties:
+        email:
+            - Email: ~
+        password:
+            - Length:
+                min: 8
+        cedula:
+            - Length:
+                min: 10
+                max: 10
+

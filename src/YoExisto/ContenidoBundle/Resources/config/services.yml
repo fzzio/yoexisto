@@ -16,3 +16,9 @@ services:
         arguments: [~, YoExisto\ContenidoBundle\Entity\Municipio, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Municipio}
+
+    yo_existo_contenido.admin.estado:
+        class: YoExisto\ContenidoBundle\Admin\EstadoAdmin
+        arguments: [~, YoExisto\ContenidoBundle\Entity\Estado, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Estado}

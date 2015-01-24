@@ -62,6 +62,7 @@ YoExisto\ContenidoBundle\Entity\Control:
     manyToMany:
         votos:
             targetEntity: Voto
+            cascade: ["persist"]
             joinTable:
                 name: votos_control
                 joinColumns:
