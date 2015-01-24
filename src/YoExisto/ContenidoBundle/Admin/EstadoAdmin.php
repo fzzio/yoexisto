@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class AreaAdmin extends Admin
+class EstadoAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -50,7 +50,7 @@ class AreaAdmin extends Admin
 
             ->add('nombre')
             ->add('descripcion')
-            ->add('municipio')
+            ->add('area')
         ;
     }
 

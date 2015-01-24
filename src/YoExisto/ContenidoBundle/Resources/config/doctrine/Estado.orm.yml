@@ -1,0 +1,26 @@
+YoExisto\ContenidoBundle\Entity\Estado:
+    type:  entity
+    table: estado
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        nombre:
+            type: string
+            nullable: false
+
+        descripcion:
+            type: text
+            nullable: true
+
+    manyToOne:
+        area:
+            targetEntity: YoExisto\ContenidoBundle\Entity\Area
+            joinColumn:
+                name: area_id
+                referencedColumnName: id
