@@ -2,23 +2,38 @@ yo_existo_contenido_homepage:
     path:     /hello/{name}
     defaults: { _controller: YoExistoContenidoBundle:Default:index }
 
+
+yoexisto_prueba:
+    path:      /prueba
+    defaults:  { _controller: YoExistoContenidoBundle:Security:prueba }
+
+
+
+####################################################
+##############      autenticacion      #############
+####################################################
 yoexisto_login:
     path:      /login
-    defaults:  { _controller: YoExistoContenidoBundle:Default:login }
+    defaults:  { _controller: YoExistoContenidoBundle:Security:login }
 
 yoexisto_registrar:
     path:      /registrar
-    defaults:  { _controller: YoExistoContenidoBundle:Default:registrar }
+    defaults:  { _controller: YoExistoContenidoBundle:Security:registrar }
 
 
 yoexisto_activar:
     path:      /activar/{codigo}
-    defaults:  { _controller: YoExistoContenidoBundle:Default:activar }
+    defaults:  { _controller: YoExistoContenidoBundle:Security:activar}
 
 
 yoexisto_enviar_codigo:
     path:      /enviarActivacion
     defaults:  { _controller: YoExistoContenidoBundle:Default:testCodigo }
+
+#####################################################
+#fin de autenticacion
+####################################################
+
 
 
 

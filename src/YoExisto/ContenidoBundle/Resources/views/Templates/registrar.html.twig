@@ -3,14 +3,13 @@
 {% block contenido %}
 
 
-
-
-
     {% for flashMessage in app.session.flashbag.get('error') %}
 
         {{ flashMessage }}
 
     {% endfor %}
+
+    {{ form_errors( form ) }}
 
 	<div class="fondo-cover wrapper-registro">
 		<div class="v-center-contenedor">
@@ -28,8 +27,6 @@
 									</div>
 								</div>
 							</div>
-							
-
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-md-12">
@@ -38,32 +35,41 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<form class="form-home form-horizontal" method="post" action="{{ path('yoexisto_registrar') }}" >
+										<form  id="register-form" class="form-home form-horizontal" method="post" action="{{ path('yoexisto_registrar') }}" >
 											<div class="inner-addon left-inner-addon ">
+
 											    <i class="icono icono-usuario"></i>
-                                                {{ form_widget(form.username ,  {'attr': {'class': 'form-control input-home' , placeholder: 'USUARIO', maxlength:'50' }}  ) }}
+
+                                                {{ form_widget(form.username ,  {'attr': {'class': 'form-control input-home  ' , placeholder: 'USUARIO', maxlength:'50' }}  ) }}
+                                                {{ form_errors(form.username ) }}
+
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-password"></i>
                                                 {{ form_widget(form.password ,  {'attr': {'class': 'form-control input-home' , placeholder: 'CONTRASEÑA', maxlength:'50' }}  ) }}
+                                                {{ form_errors(form.password ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-email"></i>
                                                 {{ form_widget(form.email,  {'attr': {'class': 'form-control input-home' , placeholder: 'EMAIL', maxlength:'50' }}  ) }}
+                                                {{ form_errors(form.email ) }}
 											</div>
 											<div class="inner-addon left-inner-addon ">
 											    <i class="icono icono-cedula"></i>
                                                 {{ form_widget(form.cedula,  {'attr': {'class': 'form-control input-home' , placeholder: '# CÉDULA', maxlength:'10' }}  ) }}
+                                                {{ form_errors(form.cedula ) }}
 											</div>
 											<div class="form-group form-group-sm espacio-a">
 												<span class="lbl-form-sm" for="sm_input_file_1">Suba una foto:</span>
 												<div class="custom-input-file">
-							                    	{{ form_widget(  form.foto , {'attr':{'id':'sm_input_file_1' , 'class':'form-control input-file input-home-file' , 'placeholder' : 'Suba una foto', 'name':'sm_input_file_1', 'onchange':'readURL(this);' }} ) }}
+							                    	{{ form_widget(  form.foto , {'attr':{'id':'sm_input_file_1' , 'class':'form-control ' , 'required': 'required' ,   'placeholder' : 'Suba una foto', 'name':'sm_input_file_1', 'onchange':'readURL(this);' }} ) }}
 													<img id="sm-img-foto-1" class="sm-img-foto img-responsive" src="" alt="" />
 												</div>
 											</div>
 											
 											<div class="col-sm-8 col-sm-offset-2 text-center">
+
+                                                <input type="submit" value="go" />
 												<button type="submit" class="btn btn-lg btn-home btn-tipo-a">Registrarme</button>
 											</div>
 											<div class="col-sm-12 text-center">
@@ -74,27 +80,6 @@
 									</div>
 								</div>
 							</div>
-
-
-		 					 {#
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-md-12">
-										<h3 class="titular-home text-center">ESTAMOS CASI LISTOS</h3>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<p>
-											Hemos enviado un correo de confirmación a tu email. Haz click en el link de confirmación para terminar de crear tu cuenta.
-										</p>
-									</div>
-								</div>
-							</div>
-                            #}
-
-
-
 
                         </div>
 					</div>
