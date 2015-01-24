@@ -95,7 +95,7 @@ function verReporte(reporte){
                 $("#drp-direccion").text( respuesta.control.direccion );
                 $("#drp-institucion").text( respuesta.control.institucion );
                 $("#drp-descripcion").text( respuesta.control.descripcion );
-                $("#drp-imagen").attr("src", "/yoexistoapp/web/uploads/" + respuesta.control.imagen); //fzzio verificar
+                $("#drp-imagen").attr("src", "../uploads/" + respuesta.control.imagen); //fzzio verificar
                 $("#drp-votos").text( respuesta.control.votos );
 
                 if(  respuesta.control.voto_registrado === "si" ){
