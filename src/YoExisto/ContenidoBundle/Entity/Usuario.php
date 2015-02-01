@@ -10,6 +10,7 @@ namespace YoExisto\ContenidoBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+
 /**
  * User
  */
@@ -176,7 +177,7 @@ class Usuario extends BaseUser
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/users/';
+        return 'uploads/profile/';
     }
 
 

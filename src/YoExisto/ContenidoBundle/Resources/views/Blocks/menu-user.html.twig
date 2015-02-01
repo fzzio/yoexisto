@@ -29,7 +29,15 @@
         <li>
            <div class="btn-group">
             <button class="btn txt-mayus btn-transparente" type="button">
-              <img src="http://placehold.it/27x27" alt="" class="img-responsive img-centrar img-perfil" />
+
+                {% if app.user.foto %}
+              <img src="{{ asset( 'uploads/profile/' ~ app.user.foto ) }}" alt=""  style="width: 35px;height: 35px;" class="img-responsive img-centrar img-perfil" />
+                {% else %}
+                    
+                    <img src="{{ asset( 'uploads/default.png') }}" alt=""  style="width: 35px;height: 35px;" class="img-responsive img-centrar img-perfil" />
+                {% endif %}
+
+
               <span class="txt-cursiva">{{ app.user.username }}</span>
             </button>
             <button data-toggle="dropdown" class="btn btn-transparente dropdown-toggle txt-mayus" type="button">

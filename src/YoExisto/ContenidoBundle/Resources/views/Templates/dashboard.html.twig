@@ -17,7 +17,13 @@
 						<div class="row fondo-naranja txt-mayusculas txt-blanco">
 							<ul class="nav nav-bar col-md-5 lst-perfil">
 								<li class="col-lg-5 col-md-5 col-sm-5 col-xs-5 interlineado-140">
-									<img src="http://placehold.it/70x70" alt="" class="img-responsive img-centrar img-perfil" />
+                                    {% if  app.user.foto %}
+									    <img src="{{ asset( 'uploads/profile/' ~ app.user.foto ) }}"   style="height: 85px; width: 85px;" alt="" class="img-responsive img-centrar img-perfil" />
+                                    {% else %}
+
+                                        <img  src="{{ asset( 'uploads/default.png' ) }}"   style="height: 85px; width: 85px;" alt="" class="img-responsive img-centrar img-perfil" />
+
+                                    {% endif %}
 								</li>
 								<li class="col-lg-7 col-md-7 col-sm-7 col-xs-7 text-left interlineado-140">
 									<span class="">{{ app.user.username }}</span>
@@ -62,6 +68,16 @@
 								<select  id="filtro_areas"  onchange="getActividadPorArea( this )" class="form-control espacio-a yea-borde input-yeapp oscuro">
 									<option>-</option>
 								</select>
+
+                                <select  id="filtro_estado"  onchange="  $('#filtro_areas').trigger('change'); " class="form-control espacio-a yea-borde input-yeapp oscuro">
+									<option value="0" >Todos los estados</option>
+									<option value="1" >Solucionado</option>
+									<option value="2"  >En Proceso </option>
+									<option value="3" >Sin Atencion</option>
+									<option value="4" >En Votacion</option>
+								</select>
+
+
 								<hr class="linea-gris" />
 							</div>
 						</div>

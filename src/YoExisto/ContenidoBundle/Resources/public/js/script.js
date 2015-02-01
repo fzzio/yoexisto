@@ -16,6 +16,18 @@ function getAreasPorMunicipio( elemento  ){
 function getActividadPorArea( elemento  ){
 
     $.ajax({
+        url: Routing.generate('yoexisto_buscar_actividad_por_area', {area: $(elemento).val()  , estado: $("#filtro_estado").val() }),
+        success:function(  response  ){
+            $("#actividadReciente").html(  response  );
+        }
+    });
+}
+
+
+
+function getActividadPorEstado( elemento  ){
+
+    $.ajax({
         url: Routing.generate('yoexisto_buscar_actividad_por_area', {area: $(elemento).val() }),
         success:function(  response  ){
             $("#actividadReciente").html(  response  );

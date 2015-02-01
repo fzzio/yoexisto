@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <form  id="register-form" class="form-home form-horizontal" method="post" action="{{ path('yoexisto_registrar') }}" >
+                                        <form  id="register-form" class="form-home form-horizontal"  {{ form_enctype(form) }} method="post" action="{{ path('yoexisto_registrar') }}" >
                                             <div class="inner-addon left-inner-addon ">
 
                                                 <i class="icono icono-usuario"></i>
@@ -62,7 +62,7 @@
                                             <div class="form-group form-group-sm espacio-a">
                                                 <span class="lbl-form-sm" for="sm_input_file_1">Suba una foto:</span>
                                                 <div class="custom-input-file">
-                                                    {{ form_widget(  form.foto , {'attr':{'id':'sm_input_file_1' , 'class':'form-control ' , 'required': 'required' ,   'placeholder' : 'Suba una foto', 'name':'sm_input_file_1', 'onchange':'readURL(this);' }} ) }}
+                                                    {{ form_widget(  form.file , {'attr':{  'class':'form-control ' ,     'placeholder' : 'Suba una foto', 'name':'sm_input_file_1' }} ) }}
                                                     <img id="sm-img-foto-1" class="sm-img-foto img-responsive" src="" alt="" />
                                                 </div>
                                             </div>

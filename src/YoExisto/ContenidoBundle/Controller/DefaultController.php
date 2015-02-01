@@ -251,6 +251,7 @@ class DefaultController extends Controller
         $voto->setValor(1);
 
         $control->addVoto($voto);
+        $control->setPositivos( $control->getVotos()->count() );
 
         $em->flush();
 

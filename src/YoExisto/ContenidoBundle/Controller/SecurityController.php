@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 
@@ -83,7 +84,7 @@ class SecurityController extends Controller
             ->add('password', 'password')
             ->add('email', 'text')
             ->add('cedula', 'text')
-            ->add('foto', 'file' , array('required' => true))
+            ->add('file', 'file' , array('required' => false))
             ->add('save', 'submit', array('label' => 'Create Task'))
             ->getForm();
 

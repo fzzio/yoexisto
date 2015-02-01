@@ -64,10 +64,11 @@ yoexisto_buscar_areas:
         expose: true
 
 yoexisto_buscar_actividad_por_area:
-    path:      /getActividadPorArea/{area}
+    path:      /getActividadPorArea/{area}/{estado}
     defaults:  { _controller: YoExistoContenidoBundle:Filtro:getActividadPorArea }
     options:
         expose: true
+
 
 
 
@@ -82,7 +83,7 @@ yoexisto_buscar_actividad_por_area:
 
 yoexisto_home:
     path:      /
-    defaults:  { _controller: YoExistoContenidoBundle:Default:login }
+    defaults:  { _controller: YoExistoContenidoBundle:Security:login }
 
 
 # Esto es para las 3 pantallas
