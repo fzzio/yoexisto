@@ -129,11 +129,15 @@ class SecurityController extends Controller
 
             $session->getFlashBag()->add(
                 'success',
-                'Usuario Registrado Correctamente'
+                'Tu cuenta ha sido creada, revisa tu bandeja de correo'
             );
 
+
+            $usuario = $this->getDoctrine()->getManager()->getRepository("YoExistoContenidoBundle:Usuario")->find( $user->getId() );
             $this->enviaMail(  $usuario );
-            return $this->redirect($this->generateUrl('yoexisto_ready'));
+
+            return $this->render('YoExistoContenidoBundle:Templates:ready.html.twig', array("usuario" =>  $usuario ));
+
 
         }
 
@@ -180,6 +184,17 @@ class SecurityController extends Controller
         } else {
             return false;
         }
+    }
+
+
+
+    public function testCodigoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $em->getRepository("YoExistoContenidoBundle:Usuario")->find(20);
+        $this->enviaMail(  $usuario );
+
+//        return $this->render('YoExistoContenidoBundle:Templates:ready.html.twig');
     }
 
 

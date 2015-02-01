@@ -26,9 +26,14 @@ yoexisto_activar:
     defaults:  { _controller: YoExistoContenidoBundle:Security:activar}
 
 
+
+
+
+
+
 yoexisto_enviar_codigo:
-    path:      /enviarActivacion
-    defaults:  { _controller: YoExistoContenidoBundle:Default:testCodigo }
+    path:      /enviarActivacion123
+    defaults:  { _controller: YoExistoContenidoBundle:Security:testCodigo}
 
 #####################################################
 #fin de autenticacion

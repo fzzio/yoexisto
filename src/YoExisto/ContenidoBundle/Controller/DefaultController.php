@@ -27,8 +27,13 @@ class DefaultController extends Controller
 
     public function readyAction()
     {
-        return $this->render('YoExistoContenidoBundle:Templates:ready.html.twig');
+
+//        $usuario = $this->getDoctrine()->getManager()->getRepository("YoExistoContenidoBundle:Usuario")->find(20);
+//
+//        return $this->render('YoExistoContenidoBundle:Templates:ready.html.twig', array("usuario" => $usuario ));
     }
+
+
 
 
 
