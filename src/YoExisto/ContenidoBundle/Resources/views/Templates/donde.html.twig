@@ -6,14 +6,17 @@
 
 {% block contenidointerno %}
     <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
-		<div class="row espacio-a">
-			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-1000">
-				<h3 class="txt-mayusculas">Generar Control</h3>
-				<span>Llene los datos a continuación para generar control</span>
-			</div>
-			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-right">
+		<div class="row espacio-a fondo-naranjabajo">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-left">
 				<h3>
 					<a href="{{ path('yoexisto_reciente') }}" class="link-yep icono-cerrar" alt=""></a>
+				</h3>
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-8 text-left">
+				<h2 class="txt-mayusculas">Generar Control</h2>
+				<h3>
+					Los bienes y servicios son tuyos,<br />
+					Si detectas algo que pudo o debe estar mejor, notifícalo ahora
 				</h3>
 			</div>
 		</div>
@@ -47,14 +50,72 @@
             			<div class="col-sm-12">
             			</div>
             		</div>
+
+
             		<div class="row">
             			<div class="col-sm-12">
-		                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geo">
-		                    	<span class="icono-yeapp ico-geo"></span>
-		                    	<span class="texto-geo">Geolocalizar control</span>
-		                    </a>
+            				
+
+							<div role="tabpanel">
+								<ul class="nav nav-tabs" role="tablist">
+								    <li role="presentation" class="active">
+								    	<a href="#dondeubicar" aria-controls="dondeubicar" role="tab" data-toggle="tab">
+								    		Ubicar en Mapa
+								    	</a>
+								    </li>
+								    <li role="presentation">
+								    	<a href="#dondeescribir" aria-controls="dondeescribir" role="tab" data-toggle="tab">
+								    		Escribir dirección
+								    	</a>
+								    </li>
+								</ul>
+
+								<div class="tab-content">
+									<div role="tabpanel" class="tab-pane fade in active" id="dondeubicar">
+
+										<div class="container-fluid">
+
+											<div class="row">
+						            			<div class="col-sm-12 text-center">
+								                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geo">
+								                    	<span class="icono-yeapp ico-geo"></span>
+								                    	<span class="texto-geo">Geolocalizar</span>
+								                    </a>
+						            			</div>
+						            		</div>
+										</div>
+									</div>
+
+									<div role="tabpanel" class="tab-pane fade" id="dondeescribir">
+										<div class="container-fluid">
+											<div class="row espacio-a">
+						            			<div class="col-sm-12">
+									                <div class="form-group">
+									                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Escribir dirección del control', 'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
+
+									                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geobuscar">
+									                    	<span class="icono-yeapp ico-geo"></span>
+									                    	<span class="texto-geo">Buscar</span>
+									                    </a>
+													</div>
+						            			</div>
+						            		</div>
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+
             			</div>
+
             		</div>
+
+
+
+
+
             		<div class="row espacio-a">
             			<div class="col-sm-12">
 							<div id="geomapa" class="geomapa">
@@ -62,28 +123,7 @@
 							</div>
             			</div>
             		</div>
-            		<div class="row espacio-a">
-            			<div class="col-sm-12">
-			                <div class="form-group">
-			                	<span>O escríbela y buscala</span>
-			                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Dirección', 'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
 
-			                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geobuscar">
-			                    	<span class="icono-yeapp ico-geo"></span>
-			                    	<span class="texto-geo">Buscar control</span>
-			                    </a>
-							</div>
-            			</div>
-            		</div>
-
-            		
-            		<div class="row">
-            			<div class="col-sm-12">
-							<div class="form-group">
-								<input type="text" class="form-control espacio-a yea-borde input-yeapp" placeholder="Nombre de la institución (de ser necesario)">
-							</div>
-            			</div>
-            		</div>
             		<div class="row">
             			<div class="col-sm-12">
 							{{ form_widget(  form.latitud  ) }}
