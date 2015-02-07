@@ -18,10 +18,12 @@
 							<ul class="nav nav-bar col-md-5 lst-perfil">
 								<li class="col-lg-5 col-md-5 col-sm-5 col-xs-5 interlineado-140">
                                     {% if  app.user.foto %}
-									    <img src="{{ asset( 'uploads/profile/' ~ app.user.foto ) }}"   style="height: 85px; width: 85px;" alt="" class="img-responsive img-centrar img-perfil" />
+									    <img src="{{ asset( 'uploads/profile/' ~ app.user.foto ) }}"   style="height: 85px; width: 85px;" alt="" class="img-responsive img-centrar" />
                                     {% else %}
 
-                                        <img  src="{{ asset( 'uploads/default.png' ) }}"   style="height: 85px; width: 85px;" alt="" class="img-responsive img-centrar img-perfil" />
+                                    	{% image '@YoExistoContenidoBundle/Resources/public/images/default.png' %}
+					                        <img src="{{ asset_url }}" title="" alt="" class="img-responsive img-centrar img-perfil" style="height: 85px; width: 85px;" />
+					                    {% endimage %}
 
                                     {% endif %}
 								</li>

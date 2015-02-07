@@ -30,12 +30,13 @@
            <div class="btn-group">
             <button class="btn txt-mayus btn-transparente" type="button">
 
-                {% if app.user.foto %}
-              <img src="{{ asset( 'uploads/profile/' ~ app.user.foto ) }}" alt=""  style="width: 35px;height: 35px;" class="img-responsive img-centrar img-perfil" />
-                {% else %}
-
-                    <img src="{{ asset( 'uploads/default.png') }}" alt=""  style="width: 35px;height: 35px;" class="img-responsive img-centrar img-perfil" />
-                {% endif %}
+              {% if app.user.foto %}
+                <img src="{{ asset( 'uploads/profile/' ~ app.user.foto ) }}" alt=""  style="width: 35px; height: 35px;" class="img-responsive img-centrar img-perfil pq" />
+              {% else %}
+                {% image '@YoExistoContenidoBundle/Resources/public/images/default.png' %}
+                  <img src="{{ asset_url }}"  alt=""  style="width: 35px;height: 35px;" class="img-responsive img-centrar img-perfil pq" />
+                {% endimage %}
+              {% endif %}
 
 
               <span class="txt-cursiva">{{ app.user.username }}</span>

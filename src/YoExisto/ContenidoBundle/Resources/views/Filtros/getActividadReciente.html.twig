@@ -51,6 +51,9 @@
                 
 
                 <button class="btn btn-lg btn-home btn-tipo-a btn-voto {% for voto in control.votos %}{% if app.user == voto.usuario  %} oculto {% endif %}{% endfor %}" onclick="votar(this, {{ control.id }});">
+                    {% image '@YoExistoContenidoBundle/Resources/public/images/thumbup.png' %}
+                        <img src="{{ asset_url }}" title="" alt="" class="icono-boton" />
+                    {% endimage %}
                     Votar por control
                 </button>
 
