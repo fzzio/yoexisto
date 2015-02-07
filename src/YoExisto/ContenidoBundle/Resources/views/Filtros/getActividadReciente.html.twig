@@ -1,29 +1,65 @@
-
 {% for control in controles %}
+    
+    <div class="container-fluid c-reporte-reciente">
+        <div class="row row-reporte row-reporte-reciente">
+            <div class="col-md-12">
 
+                <div class="c-control-label">
+                    <div class="ctrl-icono envotacion"></div>
+                </div>
 
+                <strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
+                <div class="contenedor-img-reciente espacio-a">
+                    <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar" alt="">
+                </div>
 
-    <div class="row row-reporte row-reporte-reciente">
-        <div class="col-md-12">
-            <strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
-            <p>
-                {{ control.que.descripcion }}
-            </p>
+                <span class="icono-cont">
+                    <i class="icono-reporte rp-publicado"></i>Por <div class="mostrar">{{ control.usuario }}</div>
+                </span>
+                |
+                <span class="icono-cont">
+                    <i class="icono-reporte rp-ver"></i><div class="mostrar" onclick="mostrarReporte(this);">Ver más</div>
+                </span>
+                |
+                <span class="icono-cont">
+                    <i class="icono-reporte rp-comentarios"></i><div class="mostrar" >Comentarios</div>
+                </span>
+            </div>
+        </div>        
 
-            <div class="contenedor-img-reciente espacio-a">
-                <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar" alt="">
+        <div class="row row-reporte reporte-footer">
+            <div class="col-md-12 txt-mayusculas">
+                <p>
+                    <strong>Municipio: </strong><span class="drp-municipio"> {{ control.donde.municipio }}</span>
+                </p>
+                <p>
+                    <strong>Área: </strong><span class="drp-area"> {{ control.donde.area }}</span>
+                </p>
+                <p>
+                    <strong>Dirección: </strong><span class="drp-direccion"> {{ control.donde.descripcion }}</span>
+                </p>
+                <p>
+                    <strong>Descripción Control: </strong><span class="drp-descripcion"> {{ control.que.descripcion }}</span>
+                </p>
             </div>
 
-            <span class="icono-cont">
-                <i class="icono-reporte rp-publicado"></i>Publicado por <a href="">{{ control.usuario }}</a>
-            </span>
-            |
-            <span class="icono-cont">
-                <i class="icono-reporte rp-ver"></i><a href="#" onclick="verReporte({{ control.id }});">Ver más</a>
-            </span>
-            <hr class="linea-gris" />
+            <div class="col-md-12 text-center">
+                <h5>Actualmente tiene <strong class="drp-votos">{{ control.votos | length }}</strong> Votos</h5>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+
+                <button class="btn btn-lg btn-home btn-tipo-a btn-voto {% for voto in control.votos %}{% if app.user == voto.usuario  %} oculto {% endif %}{% endfor %}" onclick="votar(this, {{ control.id }});">
+                    Votar por control
+                </button>
+
+
+            </div>
+
         </div>
 
+        <hr class="linea-gris" />
     </div>
 
 

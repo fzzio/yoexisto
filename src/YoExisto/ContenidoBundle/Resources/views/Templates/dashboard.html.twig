@@ -12,7 +12,7 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 espacio-a" id="mis-reportes">
+				<div class="col-md-7 espacio-a" id="mis-reportes">
 					<div class="container-fluid fondo-gris">
 						<div class="row fondo-naranja txt-mayusculas txt-blanco">
 							<ul class="nav nav-bar col-md-5 lst-perfil">
@@ -43,11 +43,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 espacio-a" id="reporte-detalle">
-					{% include 'YoExistoContenidoBundle:Blocks:detalle-reporte.html.twig' %}
-				</div>
 
-				<div class="col-md-4 espacio-a" id="reportes-recientes">
+				<div class="col-md-5 espacio-a" id="reportes-recientes">
 					<div class="container-fluid fondo-gris">
 						<div class="row fondo-naranja txt-mayusculas txt-blanco">
 							<div class="col-md-12 espacio-a ">
@@ -56,12 +53,42 @@
 								</span>
 							</div>
 						</div>
+						<div class="row texto-gris">
+							<div class="col-md-12 espacio-a ">
+								<span class="txt-mayusculas">
+									Estado de los controles
+								</span>
+							</div>
+							<div class="col-md-12 espacio-a texto-gris text-center">
+								<div class="c-control-label">
+									<div class="ctrl-icono solucionado"></div>
+									<div class="ctrl-texto">Solucionado</div>
+								</div>
+								<div class="c-control-label">
+									<div class="ctrl-icono enproceso"></div>
+									<div class="ctrl-texto">En proceso</div>
+								</div>
+								<div class="c-control-label">
+									<div class="ctrl-icono sinatencion"></div>
+									<div class="ctrl-texto">Sin Atención</div>
+								</div>
+								<div class="c-control-label">
+									<div class="ctrl-icono envotacion"></div>
+									<div class="ctrl-texto">En Votación</div>
+								</div>
+							</div>
+						</div>
+						        
+						<hr class="linea-gris" />
 
-						<div class="row espacio-a ">
+						<div class="row espacio-a" id="contenedor-filtros">
 							<div class="col-md-12">
-								<h4 class="txt-mayusculas">
+								<h4 class="txt-mayusculas" id="filtros-collapsible">
 									Filtrar búsqueda
+									<div class="f-icono"></div>
 								</h4>
+							</div>
+							<div class="col-md-12" id="cont-filtros">
 								<select id="filtro_municipio" onchange="getAreasPorMunicipio(this);" class="form-control espacio-a yea-borde input-yeapp oscuro">
                                     {{ render(controller('YoExistoContenidoBundle:Filtro:getMunicipios')) }}
                                 </select>
@@ -78,12 +105,21 @@
 								</select>
 
 
-								<hr class="linea-gris" />
 							</div>
 						</div>
+						<hr class="linea-gris" />
 					</div>
-					<div  id="actividadReciente" class="container-fluid fondo-gris reportes-recientes-cont">
-                        {{ render(controller('YoExistoContenidoBundle:Default:getActividadReciente')) }}
+					<div id="actividadReciente" class="container-fluid fondo-gris reportes-recientes-cont">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<h4 class="texto-naranja txt-mayusculas">
+									Vota por los controles que creas más importantes
+								<h4>
+							</div>
+						</div>
+						<div class="row">
+                        	{{ render(controller('YoExistoContenidoBundle:Default:getActividadReciente')) }}
+						</div>
 					</div>
 				</div>
 			</div>

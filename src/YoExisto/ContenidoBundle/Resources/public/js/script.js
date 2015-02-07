@@ -55,7 +55,7 @@ function cerrarDetalle(){
 
 
 
-function votar( id_reporte ){
+function votar( elemento, id_reporte ){
 
 
     $.ajax({
@@ -66,8 +66,8 @@ function votar( id_reporte ){
         success: function (respuesta) {
 
             if(  respuesta.codigo == 1 ){
-                $("#drp-votos").html( respuesta.votos );
-                $("#btn_voto").hide();
+                $(elemento).parents(".c-reporte-reciente").find(".reporte-footer .drp-votos").html( respuesta.votos );
+                $(elemento).parents(".c-reporte-reciente").find(".reporte-footer .btn-voto").hide();
             }
 
 
@@ -79,62 +79,10 @@ function votar( id_reporte ){
 
 }
 
-function verReporte(reporte){
 
-    //console.log("Ver detalles de reporte: " + reporte);
-
-    var parametros = {
-        idReporte: reporte
-    }
-
-    $.ajax({
-        url: Routing.generate('yoexisto_reporte_detalle'),
-        type: 'POST',
-        async: true,
-        data: parametros,
-        dataType: "json",
-        success: function (respuesta) {
-            if (respuesta.codigo == 1) {
-
-                $("#mis-reportes").removeClass('col-md-8');
-                $("#mis-reportes").addClass('col-md-6');
-
-
-                $("#drp-titulo").text( respuesta.control.titulo );
-                $("#drp-autor").text( respuesta.control.autor );
-                $("#drp-municipio").text( respuesta.control.municipio );
-                $("#drp-area").text( respuesta.control.area );
-                $("#drp-direccion").text( respuesta.control.direccion );
-                $("#drp-institucion").text( respuesta.control.institucion );
-                $("#drp-descripcion").text( respuesta.control.descripcion );
-                $("#drp-imagen").attr("src", "../uploads/" + respuesta.control.imagen); //fzzio verificar
-                $("#drp-votos").text( respuesta.control.votos );
-
-                if(  respuesta.control.voto_registrado === "si" ){
-                    $("#btn_voto").hide();
-                }else{
-                    $("#btn_voto").show();
-                    $("#btn_voto").click(function(){
-                        votar( respuesta.control.idcontol);
-                    });
-                }
-
-
-                $("#reporte-detalle").show();
-
-                $("#reportes-recientes").removeClass('col-md-4');
-                $("#reportes-recientes").addClass('col-md-3');
-
-            }
-
-            //console.log(respuesta);
-        },
-        error: function (error) {
-            console.log("ERROR: " + error);
-        }
-    });
+function mostrarReporte(elemento){
+    $(elemento).parents(".c-reporte-reciente").find(".reporte-footer").slideToggle();
 }
-
 
 function readURL(input) {
     if (input.files && input.files[0] ) {
@@ -163,6 +111,12 @@ $(document).ready(function(){
         //geocoder.query($("#form_descripcion").val(), showMap);
     });
 
+
+    $('#filtros-collapsible').click(function() {
+        $("#cont-filtros").slideToggle();
+        $("#filtros-collapsible .f-icono").toggleClass( 'open' );
+        
+    });
 
     $('#btn-geo').click(function(e) {
         e.stopPropagation();

@@ -328,10 +328,17 @@ i.icono-reporte{
 }
 
 	i.icono-reporte.rp-publicado{
-		background-position: -286px -492px;
+		background-image: url('../../../bundles/yoexistocontenido/images/publicado.png');
+		background-position: 0px 0px;
+		padding: 2px 10px;
 	}
 	i.icono-reporte.rp-ver{
 		background-position: -86px -492px;
+	}
+	i.icono-reporte.rp-comentarios{
+		background-image: url('../../../bundles/yoexistocontenido/images/comentarios.png');
+		background-position: 0px 2px;
+		padding: 2px 10px;
 	}
 	i.icono-reporte.rp-voto{
 		background-position: -487px -291px;
@@ -341,11 +348,23 @@ i.icono-reporte{
 	font-size: 12px;
 }
 
+.row-reporte{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .row-reporte:hover,
 .row-reporte:active,
 .row-reporte:focus{
 	/*cursor: pointer;*/
 	background-color: #FFFFFF;
+}
+#filtros-collapsible{
+	cursor: pointer;
+}
+
+#cont-filtros{
+	display: none;
 }
 
 .btn-transparente{
@@ -380,6 +399,12 @@ i.icono-reporte{
 
 #reporte-detalle{
 	display: none;
+}
+.oculto{
+	display: none;
+}
+.reporte-footer{
+    display: none;
 }
 
 .yea-borde{
@@ -484,3 +509,64 @@ textarea:-ms-input-placeholder {
 	background-color: #FECA98;
 }
 
+.c-control-label{
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.c-control-label .ctrl-icono{
+	background-repeat: no-repeat;
+	background-image: url('../../../bundles/yoexistocontenido/images/controles-sprite.png');
+	background-color: transparent;
+	width: 15px;
+	height: 15px;
+	margin: 0 auto;
+	position: relative;
+}
+.c-control-label .ctrl-icono.solucionado{
+	background-position: -5px 0px;
+}
+.c-control-label .ctrl-icono.enproceso{
+	background-position: -30px 0px;
+}
+.c-control-label .ctrl-icono.sinatencion{
+	background-position: -56px 0px;
+}
+.c-control-label .ctrl-icono.envotacion{
+	background-position: -81px 0px;
+}
+
+.c-control-label .ctrl-texto{
+	position: relative;
+	margin-top: 5px
+}
+
+#filtros-collapsible .f-icono{
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	margin-left: 8px;
+	margin-right: 8px;
+	width: 15px;
+	height: 15px;
+	background-repeat: no-repeat;
+	background-image: url('../../../bundles/yoexistocontenido/images/triangulosprite.png');
+	background-color: transparent;
+	background-position: 2px 1px;
+}
+
+#filtros-collapsible .f-icono.open{
+	background-position: -10px 1px;
+}
+
+.mostrar{
+	display: inline-block;
+	cursor: pointer;
+	color: #628DB2;
+}
+.mostrar:hover{
+	text-decoration: underline;
+}
