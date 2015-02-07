@@ -91,12 +91,20 @@
 											<div class="row espacio-a">
 						            			<div class="col-sm-12">
 									                <div class="form-group">
-									                    {{ form_widget(  form.descripcion , {'attr':{'placeholder':'Escribir dirección del control', 'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
+									                	<div class="container-fluid">
+									                		<div class="row">
+									                			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">
+									                    			{{ form_widget(  form.descripcion , {'attr':{'placeholder':'Escribir dirección del control', 'class':'form-control espacio-a yea-borde input-yeapp'}} ) }}
+									                			</div>
+									                			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+												                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geobuscar">
+												                    	<span class="icono-yeapp ico-geo"></span>
+												                    	<span class="texto-geo">Buscar</span>
+												                    </a>
+									                			</div>
+									                		</div>
+									                	</div>
 
-									                    <a href="#" class="btn btn-tipo-a espacio-a btn-geo" id="btn-geobuscar">
-									                    	<span class="icono-yeapp ico-geo"></span>
-									                    	<span class="texto-geo">Buscar</span>
-									                    </a>
 													</div>
 						            			</div>
 						            		</div>

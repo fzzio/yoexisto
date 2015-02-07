@@ -573,3 +573,8 @@ textarea:-ms-input-placeholder {
 .mostrar:hover{
 	text-decoration: underline;
 }
+
+.tab-content > .active{
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+}
