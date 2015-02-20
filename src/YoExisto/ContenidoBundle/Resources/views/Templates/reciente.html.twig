@@ -14,13 +14,13 @@
 		</div>
 
 		<div class="row espacio-a">
-			<div class="col-md-4 txt-mayusculas">
+			<div class="col-md-8 txt-mayusculas">
 				<h3 class="texto-naranja txt-mayusculas">Actividad Reciente</h3>
 			</div>
 		</div>
 	</div>
 
-	<div class="container-fluid reportes-recientes-cont">
+	<div class="container-fluid">
         {% for control in controles%}
             {% include 'YoExistoContenidoBundle:Blocks:reporte.html.twig' with {'control' : control} %}
         {% endfor %}

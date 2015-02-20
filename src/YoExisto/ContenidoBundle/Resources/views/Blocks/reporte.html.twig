@@ -1,20 +1,56 @@
-<div class="row row-reporte">
-	<div class="col-md-12 espacio-a">
-		<strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
-		<p>
-            {{ control.que.descripcion }}
-		</p>
-		<span class="icono-cont">
-			<i class="icono-reporte rp-publicado"></i>Publicado por <a href="">{{ control.usuario }}</a>
-		</span>
-		|
-		<span class="icono-cont">
-			<i class="icono-reporte rp-ver"></i><a href="#" onclick="verReporte({{ control.id }});">Ver más</a>
-		</span>
-		|
-		<span class="icono-cont">
-			<i class="icono-reporte rp-voto"></i> {{ control.positivos }} votos
-		</span>
-		<hr class="linea-gris" />
-	</div>
+<div class="container-fluid c-reporte-reciente">
+    <div class="row row-reporte row-reporte-reciente">
+        <div class="col-md-12">
+
+            <div class="c-control-label">
+                <div class="ctrl-icono envotacion"></div>
+            </div>
+
+            <strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
+
+            <p>
+	            {{ control.que.descripcion }}
+			</p>
+
+            <span class="icono-cont">
+                <i class="icono-reporte rp-publicado"></i>Por <div class="mostrar">{{ control.usuario }}</div>
+            </span>
+            |
+            <span class="icono-cont">
+                <i class="icono-reporte rp-ver"></i><div class="mostrar" onclick="mostrarReporte(this);">Ver más</div>
+            </span>
+            |
+            <span class="icono-cont">
+                <i class="icono-reporte rp-comentarios"></i><div class="mostrar" >Comentarios</div>
+            </span>
+            |
+			<span class="icono-cont">
+				<i class="icono-reporte rp-voto"></i> {{ control.positivos }} votos
+			</span>
+        </div>
+    </div>
+
+    <div class="row row-reporte reporte-footer">
+    	<div class="col-md-12">
+            <div class="contenedor-img-reciente espacio-a">
+                <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar" alt="">
+            </div>
+    	</div>
+
+        <div class="col-md-12 txt-mayusculas">
+            <p>
+                <strong>Municipio: </strong><span class="drp-municipio"> {{ control.donde.municipio }}</span>
+            </p>
+            <p>
+                <strong>Área: </strong><span class="drp-area"> {{ control.donde.area }}</span>
+            </p>
+            <p>
+                <strong>Dirección: </strong><span class="drp-direccion"> {{ control.donde.descripcion }}</span>
+            </p>
+        </div>
+
+    </div>    
+
+
+    <hr class="linea-gris" />
 </div>

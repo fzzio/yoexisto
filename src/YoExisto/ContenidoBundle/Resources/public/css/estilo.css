@@ -260,6 +260,13 @@ html, body{
 	margin-bottom: 20px;
 }
 
+.lst-perfil.nav > li > a,
+.lst-perfil > li > a{
+	background-color: transparent;
+	background-image: none;
+	border-radius: 0px;
+	border: 1px solid transparent;
+}
 .lst-perfil.nav > li > a:hover,
 .lst-perfil > li > a:focus{
 	background-color: transparent;
