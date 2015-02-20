@@ -62,15 +62,13 @@
                                             <div class="form-group form-group-sm espacio-a">
                                                 <span class="lbl-form-sm" for="sm_input_file_1">Suba una foto:</span>
                                                 <div class="custom-input-file">
-                                                    {{ form_widget(  form.file , {'attr':{  'class':'form-control ' ,     'placeholder' : 'Suba una foto', 'name':'sm_input_file_1' }} ) }}
+                                                    {{ form_widget(  form.file , {'attr':{ 'id':'sm_input_file_1', 'class':'form-control  input-file', 'placeholder' : 'Suba una foto', 'name':'sm_input_file_1', 'onchange':'readURL(this);' }} ) }}
                                                     <img id="sm-img-foto-1" class="sm-img-foto img-responsive" src="" alt="" />
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-8 col-sm-offset-2 text-center">
-
-                                                <input type="submit" value="go" />
-                                                <button type="submit" class="btn btn-lg btn-home btn-tipo-a">Registrarme</button>
+                                                <input type="submit" class="btn btn-lg btn-home btn-tipo-a" value="Registrarme">
                                             </div>
                                             <div class="col-sm-12 text-center">
                                                 <a href="{{ path('yoexisto_login') }}" class="link-home">&iquest;Ya tienes cuenta&quest; Inicia sesión</a>
