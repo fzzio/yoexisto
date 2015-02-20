@@ -405,6 +405,7 @@ i.icono-reporte{
 	background-position: -288px -290px;
 	width: 22px;
 	height: 22px;
+	cursor: pointer;
 }
 
 #reporte-detalle{
@@ -584,4 +585,30 @@ textarea:-ms-input-placeholder {
 .tab-content > .active{
 	border-right: 1px solid #ddd;
 	border-left: 1px solid #ddd;
+}
+
+.yeapp-modal .modal-content{
+	border-radius: 0px;
+	background-color: #F5E8E1;
+}
+
+.yeapp-modal .modal-content .modal-footer, .yeapp-modal .modal-content .modal-header{
+	border: none;
+}
+
+.yeapp-modal .modal-content .modal-header .close{
+	opacity: 1;
+	font-size: 30px;
+	font-family: Arial;
+	font-weight: normal;
+	outline: none;
+}
+.yeapp-modal .modal-content .modal-header .close:hover,
+.yeapp-modal .modal-content .modal-header .close:active,
+.yeapp-modal .modal-content .modal-header .close:focus{
+	opacity: 0.8;
+}
+
+.img-control{
+	cursor: pointer;
 }

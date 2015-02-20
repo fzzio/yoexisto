@@ -10,7 +10,7 @@
 
                 <strong class="txt-mayusculas">{{ control.que.titulo }}</strong>
                 <div class="contenedor-img-reciente espacio-a">
-                    <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar" alt="">
+                    <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar img-control" alt="" onclick="mostrarReporteCompleto(this, {{ control.id }});">
                 </div>
 
                 <span class="icono-cont">

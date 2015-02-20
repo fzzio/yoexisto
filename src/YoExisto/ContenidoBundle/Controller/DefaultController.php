@@ -268,12 +268,12 @@ class DefaultController extends Controller
 
     public function getDetalleReporteAction(Request $request){
 
-
         $currentUser  = $this->get('security.context')->getToken()->getUser();
 
 
 
         if ($request->isMethod('POST')) {
+
             $id_control = intval($request->request->get('idReporte'));
 
 
@@ -318,7 +318,7 @@ class DefaultController extends Controller
                 ), 200); //codigo de error diferente
             }else{
                 return new JsonResponse(array(
-                    'codigo' => 1,
+                    'codigo' => 2,
                     'Mensaje' => "Control no encontrado",
                     'idcontolRecibido' => $id_control
                 ), 200); //codigo de error diferente

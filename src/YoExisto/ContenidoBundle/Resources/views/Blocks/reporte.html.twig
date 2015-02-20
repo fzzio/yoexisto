@@ -33,7 +33,7 @@
     <div class="row row-reporte reporte-footer">
     	<div class="col-md-12">
             <div class="contenedor-img-reciente espacio-a">
-                <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar" alt="">
+                <img src="{{ asset('uploads/' ~ control.que.archivo ) }}" class="img-responsive obj-centar img-control" alt="" onclick="mostrarReporteCompleto(this, {{ control.id }});">
             </div>
     	</div>
 

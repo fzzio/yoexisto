@@ -18,16 +18,100 @@
 	</head>
 	<body>
 		{% block menu %}
-
-            {# {{ render(controller(
-            'YoExistoContenidoBundle:Default:getMenu'
-            )) }} #}
+            {# {{ render(controller( 'YoExistoContenidoBundle:Default:getMenu' )) }} #}
 		{% endblock %}
-
 
 		{%  block contenido %}
 			
 		{%  endblock %}
+
+		{% block modal %}
+			 
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".yeapp-modal-lg">Large modal</button>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".yeapp-modal-sm">Small modal</button>
+			
+
+
+			<div class="modal fade yeapp-modal yeapp-modal-lg" tabindex="-1" role="dialog" aria-labelledby="yeappLargeModalLabel" aria-hidden="true" id="modalComentarios"> 
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header fondo-naranja txt-mayusculas txt-blanco">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">Comentarios</h4>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid">
+								<div class="row">
+									
+									<div class="col-sm-8">
+										<img src="" class="img-responsive drp-imagen">
+									</div>
+									<div class="col-sm-4">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-md-12 txt-mayusculas">
+													<p>
+									                    <strong>Título: </strong><span class="drp-titulo"></span>
+									                </p>
+									                <p>
+									                    <strong>Autor: </strong><span class="drp-autor"></span>
+									                </p>
+									                <p>
+									                    <strong>Municipio: </strong><span class="drp-municipio"></span>
+									                </p>
+									                <p>
+									                    <strong>Área: </strong><span class="drp-area"></span>
+									                </p>
+									                <p>
+									                    <strong>Dirección: </strong><span class="drp-direccion"></span>
+									                </p>
+									                <p>
+									                    <strong>Descripción Control: </strong><span class="drp-descripcion"></span>
+									                </p>
+									                <p>
+									                    <strong>Votos: </strong><span class="drp-votos"></span>
+									                </p>
+									            </div>
+											</div>
+											<div class="row">
+												<hr class="linea-gris" />
+											</div>
+											<div class="row texto-gris">
+												<div class="col-md-12 espacio-a ">
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			
+			<div class="modal fade yeapp-modal yeapp-modal-sm" tabindex="-1" role="dialog" aria-labelledby="yeappSmallModalLabel" aria-hidden="true" id="modalAlertas">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header fondo-naranja txt-mayusculas txt-blanco">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">&iexcl;Atención!</h4>
+						</div>
+						<div class="modal-body">
+							Modal mensajes
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endblock %}
 		
 		{%  block js %}
 			{% include 'YoExistoContenidoBundle:Blocks:js.html.twig' %}

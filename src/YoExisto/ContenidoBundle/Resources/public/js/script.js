@@ -84,6 +84,47 @@ function mostrarReporte(elemento){
     $(elemento).parents(".c-reporte-reciente").find(".reporte-footer").slideToggle();
 }
 
+function mostrarReporteCompleto(elemento, id_control){
+    var parametros = {
+        idReporte: id_control
+    }
+
+    $.ajax({
+        url: Routing.generate('yoexisto_reporte_detalle'),
+        type: 'POST',
+        async: true,
+        dataType: "json",
+        data: parametros,
+        success: function (respuesta) {
+
+            if(  respuesta.codigo == 1 ){
+
+                $("#modalComentarios .drp-titulo").text( respuesta.control.titulo );
+                $("#modalComentarios .drp-autor").text( respuesta.control.autor );
+                $("#modalComentarios .drp-municipio").text( respuesta.control.municipio );
+                $("#modalComentarios .drp-area").text( respuesta.control.area );
+                $("#modalComentarios .drp-direccion").text( respuesta.control.direccion );
+                $("#modalComentarios .drp-institucion").text( respuesta.control.institucion );
+                $("#modalComentarios .drp-descripcion").text( respuesta.control.descripcion );
+                $("#modalComentarios .drp-imagen").attr("src", "/yoexistoapp/web/uploads/" + respuesta.control.imagen); //fzzio verificar
+                $("#modalComentarios .drp-votos").text( respuesta.control.votos );
+
+                $('#modalComentarios').modal();
+            }else{
+                $("#modalAlertas .modal-body").text( "Error al obtener detalles" );
+                $('#modalAlertas').modal();
+            }
+
+        },
+        error: function (error) {
+            console.log("ERROR: " + error);
+        }
+    });
+
+
+
+}
+
 function readURL(input) {
     if (input.files && input.files[0] ) {
         var reader = new FileReader();
