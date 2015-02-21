@@ -256,12 +256,42 @@ class DefaultController extends Controller
         $em->flush();
 
 
+
+
+        $usuario = $em->getRepository("YoExistoContenidoBundle:Usuario")->findOneBy(array("username" => $control->getUsuario()));
+        $this->enviaMail(    $usuario , "has recibido un voto"  ,  "tu control ha recibido un voto" );
+
+
+
         return new JsonResponse(array(
             'codigo' => 1,
             'votos'  => "" . $control->getVotos()->count(),
             'mensaje' => "Ok"
         ), 200); //codigo de error diferente
 
+    }
+
+
+
+
+    public function enviaMail(  $usuario  , $titulo , $contenido )
+    {
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject( $titulo )
+            ->setFrom(array('admin@yoexisto.com' => 'demo'))
+            ->setTo(  $usuario->getEmail() )
+            ->setBody(
+                $contenido
+            )
+            ->setContentType("text/html");
+
+
+        if ($this->get('mailer')->send($message)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

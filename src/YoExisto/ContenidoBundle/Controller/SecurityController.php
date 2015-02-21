@@ -81,7 +81,15 @@ class SecurityController extends Controller
 
         $form = $this->createFormBuilder($usuario)
             ->add('username', 'text')
-            ->add('password', 'password')
+//            ->add('password', 'password')
+            ->add('password', 'repeated', array(
+                'type' => 'password',
+                'invalid_message' => 'Las contraseñas deben coincidir.',
+                'options' => array('attr' => array('class' => 'password-field')),
+                'required' => true,
+                'first_options'  => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat Password'),
+            ))
             ->add('email', 'text')
             ->add('cedula', 'text')
             ->add('file', 'file' , array('required' => false))
@@ -175,7 +183,6 @@ class SecurityController extends Controller
             ->setTo(  $usuario->getEmail() )
             ->setBody(
                 'active su codigo aqui <a  href="'. $url = $this->generateUrl('yoexisto_activar', array('codigo' => $usuario->getActivacion()), true) .'" > Activar '
-
             )
             ->setContentType("text/html");
 

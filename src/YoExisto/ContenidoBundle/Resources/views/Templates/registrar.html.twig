@@ -46,9 +46,15 @@
                                             </div>
                                             <div class="inner-addon left-inner-addon ">
                                                 <i class="icono icono-password"></i>
-                                                {{ form_widget(form.password ,  {'attr': {'class': 'form-control input-home' , placeholder: 'CONTRASEÑA', maxlength:'50' }}  ) }}
-                                                {{ form_errors(form.password ) }}
+                                                {{ form_widget(form.password.first ,  {'attr': {'class': 'form-control input-home' , placeholder: 'CONTRASEÑA', maxlength:'50' }}  ) }}
+                                                {{ form_errors(form.password.first ) }}
                                             </div>
+                                            <div class="inner-addon left-inner-addon ">
+                                                <i class="icono icono-password"></i>
+                                                {{ form_widget(form.password.second ,  {'attr': {'class': 'form-control input-home' , placeholder: 'REPETIR CONTRASEÑA', maxlength:'50' }}  ) }}
+                                                {{ form_errors(form.password.second ) }}
+                                            </div>
+
                                             <div class="inner-addon left-inner-addon ">
                                                 <i class="icono icono-email"></i>
                                                 {{ form_widget(form.email,  {'attr': {'class': 'form-control input-home' , placeholder: 'EMAIL', maxlength:'50' }}  ) }}
